@@ -32,7 +32,7 @@ const TrackingTable = ({ trackingLogDetails }) => {
 
           {logs.map((log, index) => (
             <div className={`log-entry ${index === 0 ? 'first' : ''}`} key={index}>
-              <div className="col-md-3 log-remarks" style={{ fontSize: '13px', color: '#4e4e4e', marginLeft: '-10px' }}>{log.Remarks}</div>
+              <div className="col-md-3 log-remarks" style={{ fontSize: '13px', color: '#4e4e4e', marginLeft: '-10px' }}>{log.Remarks }{log.DeliveredTo?"-"+log.DeliveredTo:""}</div>
               <div className="col-md-6 log-location" style={{ fontSize: '13px', color: '#4e4e4e', marginLeft: '3px' }}>{log.Location}</div>
               <div className="col-md-3 log-time" style={{ fontSize: '13px', color: '#4e4e4e', marginLeft: '16px' }}>{log.ActivityTime}</div>
             </div>
