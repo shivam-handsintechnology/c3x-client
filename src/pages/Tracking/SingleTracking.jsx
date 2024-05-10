@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { setTrackingDetails } from '../../redux/reducers/TrackingDetailsReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import { useTrackByReferenceMutation, useTrackByTrackingMutation } from '../../service/apiServices';
+import { useTrackByReferenceMutation, useTrackByTrackingMutation,useTrackbybookingMutation } from '../../service/apiServices';
 const SingleTracking = () => {
     const dispatch = useDispatch()
     const trackingDetailsState = useSelector((state) => state.TrackingDetailsReducer)
     const [trackByReference] = useTrackByReferenceMutation();
     const [trackByTracking] = useTrackByTrackingMutation();
+    const [Trackbybooking]=useTrackbybookingMutation();
     const [TrackingData, setTrackingData] = useState({})
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -36,7 +37,7 @@ const SingleTracking = () => {
                 //console.log("data", data)
                 //console.log("trackingType", trackingDetailsState.trackingType)
                 const res = await (trackingDetailsState.trackingType === 'Reference'
-                    ? trackByReference(data).unwrap()
+                    ? trackByReference(data).unwrap(): trackingDetailsState.trackingType === 'Booking'?Trackbybooking(data).unwrap()
                     : trackByTracking(data).unwrap());
 
                 dispatch(setTrackingDetails({

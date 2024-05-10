@@ -1,7 +1,7 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // export const APi_Url = "http://localhost:8997/api/";
-export const APi_Url = "https://c3expressapi.handsintechnology.in/api/";
+export const APi_Url =process.env.NODE_ENV==='production'? "https://c3expressapi.handsintechnology.in/api/":"http://localhost:8997/api/";
 // export const APi_Url = "https://api.c3x.ae/api/";
 const getAuthToken = () => {
   return localStorage.getItem("token");
@@ -44,6 +44,13 @@ export const RTKQueryApi = createApi({
     trackByReference: builder.mutation({
       query: (data) => ({
         url: 'TrackByReference', // Replace with your API endpoint
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    Trackbybooking: builder.mutation({
+      query: (data) => ({
+        url: 'Trackbybooking', // Replace with your API endpoint
         method: 'POST',
         body: data,
       }),
@@ -422,7 +429,8 @@ export const {
   usePayMutation,
   useMultipleCreateAirwayBillMutation,
   useGetBatchnumberDataQuery,usePostPrepaidPaymentHistoryMutation,
-  useGetAllUserByAccountNoQuery,usePostPrepaidAccountStatusMutation
+  useGetAllUserByAccountNoQuery,usePostPrepaidAccountStatusMutation,
+  useTrackbybookingMutation,
   // reqciever address api
 } = RTKQueryApi;
 
