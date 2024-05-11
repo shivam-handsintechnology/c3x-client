@@ -66,7 +66,7 @@ const Home = (props) => {
       <Ourclients />
       <Map />
       <Footer />
-      <a className="webwhat" href="https://api.whatsapp.com/send?phone=971600504030">
+      {/* <a className="webwhat" href="https://api.whatsapp.com/send?phone=971600504030">
         <img
           title="ChatX"
           src="https://handsintechnology.in/1assets/images/WhatsApp.png"
@@ -79,7 +79,7 @@ const Home = (props) => {
             zIndex: 9999999
           }}
         />{" "}
-      </a>
+      </a> */}
     </div>
   )
 }

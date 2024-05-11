@@ -151,13 +151,7 @@ const TrackingDetails = () => {
                                                                         <div className="step-counter">✓</div>
                                                                     </div>
                                                                     <div className={`stepper-item   ${item.ShipmentProgress > 3 && 'completed'} active`}>
-                                                                        <div className="step-counter">
-                                                                            <img
-                                                                                className="logo-margin-6"
-                                                                                src={logo}
-                                                                                alt="✓"
-                                                                            />
-                                                                        </div>
+                                                                    <div className="step-counter">✓</div>
                                                                     </div>
                                                                     <div className={`stepper-item  ${item.ShipmentProgress > 4 && 'completed'}  margin-right-10`}>
                                                                         <div className="step-counter">✓</div>
