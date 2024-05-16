@@ -60,57 +60,13 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
     if (!Data || (Data && Data.AwbList.length === 0)) {
       alert("Data is not available");
     } else {
-
+      
       let data = Data.AwbList.map((item) => {
-
-        const newItems = {
-          "Awbno": item.Awbno,
-          "Date": item.Dated,
-          "Ref": item.ShipperReference,
-          "Shipper": item.Shipper,
-          "Country": item.OriginName,
-          "Consignee": item.Consignee,
-          "City": item.DestinationName,
-          "Pieces": item.PCS,
-          "Weight": item.Weight,
-          "COD Amount": item.CODAmount,
-          "Service Type": item.ServiceType,
-          "Status": item.Status,
-          "Rate": item.Rate,
-        }
-        // Delete Rate if the condition is true
-        if (userAuthData?.data?.data?.AccountData?.PayTypeDescription !== "Prepaid") {
-          delete newItems.Rate;
-        }
-        return newItems;
+         const {Rate, ...rest} = item
+        return rest;
       });
-      let manageShipingheader = [
-        "Awbno",
-        "Date",
-        "Ref",
-        "Shipper",
-        "Country",
-        "Consignee",
-        "City",
-        "Pieces",
-        "Weight",
-        "COD Amount",
-        "Service Type",
-        "Status",
-        "Rate",
-      ]
-      let header = manageShipingheader.filter((item) => {
-        // If the item is "Rate" and PayTypeDescription is "Prepaid", do not include it in the header
-        if (item === "Rate") {
-          if (userAuthData && userAuthData.data.data && userAuthData.data.data.AccountData.PayTypeDescription === "Prepaid") {
-            return false; // Do not include "Rate" in the header
-          }
-        } else {
-          return true; // Include all other items
-        }
-
-      });
-
+       let header = Object.keys(data[0])
+    
 
 
       downloadExcel({
