@@ -7,6 +7,7 @@ import Loader from "../../../heplers/Loaders/Loader";
 import { toast } from "react-toastify";
 import CoutrycodesCuurency from "../../../service/country-by-currency-code.json";
 import { handlePdfDownload } from "../../../heplers/PdfDownloader";
+import { useSelector } from "react-redux";
 const ShipmentInfo = ({ formData,
   handleChange,
   handleSubmit,
@@ -16,7 +17,8 @@ const ShipmentInfo = ({ formData,
   setisDimension,
   isDimension,
   errors }) => {
-
+  const userData = useSelector((state) => state.UserReducer);
+  const prepaidStattus = userData?.data?.data?.AccountData?.PaymentType == "PP" ? true : false
   const [MutateAirwayBilBatch] = usePostAirwayBillPDFFormatDataMutation()
   const { data, error, isLoading, refetch } = useGetUserServiceTypesDataQuery();
 
@@ -112,7 +114,7 @@ const ShipmentInfo = ({ formData,
                   value={formData["AirwayBillData"]["ServiceType"]}
                 >
                   <option value={""}>Select Service Type</option>
-                  {data && data.data.ServiceType && data.data.ServiceType.length > 0 ? data.data.ServiceType.filter(item => formData["AirwayBillData"]["ProductType"] === "DOX" ? item.value === "COD" === false : true).map((item, index) => {
+                  {data && data.data.ServiceType && data.data.ServiceType.length > 0 ? data.data.ServiceType.filter(item => formData["AirwayBillData"]["ProductType"] === "DOX" && !prepaidStattus ? item.value === "COD" === false : true).map((item, index) => {
                     return <option value={item.value}>{item.title}</option>;
                   }) : <option> No Options Available</option>}
                 </select>

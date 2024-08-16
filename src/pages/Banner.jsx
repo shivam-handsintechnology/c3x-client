@@ -35,7 +35,7 @@ const Banner = (props) => {
       <div className="banner_cover">
         <div>
           <div className="banner_item item" id="trackingshipment">
-            <video muted autoPlay loop className="img-fluid" src={banne} alt="" />
+            <video muted autoPlay loop className="img-fluid" style={{width:'100%'}} src={banne} alt="" />
             <div className="container">
               <div className="banner_content">
                 <h3>welcome to</h3>

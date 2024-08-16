@@ -7,6 +7,9 @@ import third from "../assets/images/clients/c.jpg";
 import fourth from "../assets/images/clients/d.jpg";
 import fifth from "../assets/images/clients/e.jpg";
 import six from "../assets/images/clients/f.jpg";
+import seven from "../assets/images/clients/g.jpg";
+import eight from "../assets/images/clients/h.png";
+import nine from "../assets/images/clients/i.png";
 const Ourclients = () => {
     const state = {
         autoplay: true,
@@ -60,6 +63,15 @@ const Ourclients = () => {
                 </div>
                 <div className='item'>
                     <img src={six} alt="" />
+                </div>
+                <div className='item'>
+                    <img src={seven} alt="" />
+                </div>
+                <div className='item'>
+                    <img src={eight} alt="" />
+                </div>
+                <div className='item'>
+                    <img src={nine} alt="" />
                 </div>
             </OwlCarousel>
         </div>

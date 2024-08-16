@@ -5,6 +5,7 @@ import msa4 from "../assets/images/clients/444.jpg";
 import msa5 from "../assets/images/clients/555.jpg";
 import msa6 from "../assets/images/clients/666.jpg";
 import msa7 from "../assets/images/clients/888.jpg";
+import logo from "../assets/images/logo.png"
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -162,12 +163,12 @@ const Groupofcompanies = () => {
                                     >
                                         <a href="javascript:">
                                             <img
-                                                className="img-fluid"
-                                                src={msa3}
+                                                className="img-fluid c3xlogoooo"
+                                                src={logo}
                                                 alt=""
                                             />
                                             <div className="services p-2 minht">
-                                                <h3>Kingiru Delivery Services</h3>
+                                                <h3>C3X Delivery Services</h3>
                                                 {/* <p class="m-2">Kinguru Delivery Services is located at the center of Dubai, United Arab Emirates, and provides efficient and fast-track logistic solutions ranging from all business needs to personal ones. We service our clients with the utmost professionalism, speed, efficiency, and most importantly - the best customer experience. We provide a comprehensive, accurate, and round-the-clock customer follow-up on each delivery, helping our clients to stop worrying as we ensure every parcel is delivered on time, with the utmost professionalism which guarantees the best customer experience every time.</p>*/}
                                             </div>
                                         </a>

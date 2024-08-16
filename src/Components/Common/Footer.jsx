@@ -4,6 +4,7 @@ import facebook from "../../../src/assets/images/facebook.png"
 import twitter from "../../../src/assets/images/twitter.png"
 import bankimage from "../../../src/assets/images/bankimgaesbg.png"
 import linkedin from "../../../src/assets/images/link.png"
+import whatsapp from "../../../src/assets/whatsapp.png"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -38,7 +39,20 @@ const Footer = () => {
           <button onClick={rejectCookieElement} id="activeBtn">Close</button>
         </div>
       </div>)}
-
+      <a className="webwhat" href="https://api.whatsapp.com/send?phone=971600504030">
+        <img
+          title="ChatX"
+          src={whatsapp}
+          alt="Whats app"
+          style={{
+            height: "7%",
+            position: "fixed",
+            bottom: 15,
+            left: 10,
+            zIndex: 9999999
+          }}
+        />{" "}
+      </a>
 
       <footer className="footer_box_outer">
         <div className="footer_box_cover">
@@ -101,32 +115,32 @@ const Footer = () => {
                       <h3 className="widget-title">Services</h3>
                       <ul className="list-arrow">
                         <li>
-                          <Link to="/services/Export_airland_sea">
+                          <Link to="/services/international-shipping-by-land-sea-air.html">
                             Export Air, Land &amp; Sea
                           </Link>
                         </li>
                         <li>
-                          <Link to="/services/Ecommerce_fulfilment">
+                          <Link to="/services/ecommerce-fulfilment-service-in-dubai.html">
                             E-Commerce Fulfilment
                           </Link>
                         </li>
                         <li>
-                          <Link to="/services/Ecommerce_delivery">
+                          <Link to="/services/ecommerce-delivery-service-in-dubai.html">
                             E-commerce Delivery
                           </Link>
                         </li>
                         <li>
-                          <Link to="/services/import_and_clearance_express">
+                          <Link to="/services/import-customs-clearance-in-dubai.html">
                             Import and Clearance
                           </Link>
                         </li>
                         <li>
-                          <Link to="/services/international_couriers">
+                          <Link to="/services/international-courier-service-provider-in-dubai.html">
                             International Couriers
                           </Link>
                         </li>
                         <li>
-                          <Link to="/services/domestic_couriers">
+                          <Link to="/services/domestic-parcel-service-in-dubai.html">
                             Domestic Couriers
                           </Link>
                         </li>

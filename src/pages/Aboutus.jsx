@@ -2,12 +2,13 @@ import Header1 from "../Components/Common/Header1"
 import Footer from "../Components/Common/Footer"
 import aboutus from "../assets/images/aboutus-dummy.jpg"
 import { Helmet } from "react-helmet-async"
-const Aboutus = () => {
+const Aboutus = ({ pageURL }) => {
     return (
         <div>
             <Helmet>
                 {/* HTML Meta Tags */}
                 <title>About Us | International Courier Company - C3xpress</title>
+                <link rel="canonical" href={pageURL} />
                 <meta name="description" content="Global Delivery Experts: C3xpress! Know about our trusted international courier services & commitment to excellence. Get a FREE quote today!" />
                 <link rel="canonical" content="https:www.c3xpress.com about-us" />
                 <meta name="og:site_name" content="C3xpress" />

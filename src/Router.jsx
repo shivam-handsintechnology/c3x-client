@@ -43,6 +43,7 @@ import HelpDesk from './pages/Helpdesk';
 import { toast } from 'react-toastify';
 import SchadulePickupThankYouPage from './pages/Admin/SchedulePickupComponents/SchadulePickupThankYouPage';
 import InternationalRatefinder from './pages/Ratefinder/InternationalRatefinder';
+import Thankyou from './pages/Thankyou';
 const Router = () => {
     // const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -97,6 +98,7 @@ const Router = () => {
                             <Route path='/Deliveryservice' element={<Deliveryservice />} />
                             <Route path="/contact-us" element={<Contact />} />
                             <Route path="/Contact" element={<Navigate replace to="/contact-us" />} />
+                            <Route path="/Thankyou" element={<Thankyou />} />
                             {/* <Route path="/Contact" element={<Contact />} /> */}
                             <Route path="/services/domestic-parcel-service-in-dubai" element={<Domestic_couriers />} />
                             <Route path="/services/domestic_couriers" element={<Navigate replace to="/services/domestic-parcel-service-in-dubai" />} />

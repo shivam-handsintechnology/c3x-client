@@ -5,8 +5,10 @@ import { useRef, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Spinner from 'react-bootstrap/Spinner';
 import { Helmet } from "react-helmet-async"
+import { useNavigate } from "react-router-dom";
 const Contact = () => {
     const [postContactUs, { isLoading, error, data }] = usePostContactUsMutation();
+    const Navigate = useNavigate(); 
     const canvasRef = useRef(null);
     const [formData, setFormData] = useState({
         message: "",
@@ -86,8 +88,7 @@ const Contact = () => {
                     "message": formData["message"],
                 }
                 await postContactUs(data).unwrap();
-
-            }
+                Navigate("/Thankyou");            }
 
         } catch (error) {
             console.log("error", error)
