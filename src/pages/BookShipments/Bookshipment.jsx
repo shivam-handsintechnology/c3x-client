@@ -147,6 +147,12 @@ const Bookshipment = () => {
       console.log("payload", formData["BookingData"])
       const res = await calculate(payload).unwrap()
       console.log(">>>>>>res", res)
+
+      if (res.data.NetAmount <= 0) {
+        setCalucalteData(null)
+        alert("Please contact C3X Customer Service on 600 50 40 30 or email to cs@c3xpress.com")
+        return;
+      }
       setCalucalteData(res.data)
       handleChangeData("CashOnPickup", res.data.NetAmount + 50)
     } catch (error) {
@@ -353,7 +359,29 @@ const Bookshipment = () => {
       </div>
     );
   };
+  const disableCondition = (currentStep) => {
+    console.log("currentStep", currentStep);
 
+    if (currentStep < 4) {
+      return false;
+    }
+
+    if (currentStep === 4) {
+      if (!CalucalteData) {
+        console.log("isDisable due to missing CalculateData");
+        return true;
+      }
+
+      if (!formData?.BookingData?.DutyConsigneePay || !formData?.BookingData?.termandconditions) {
+        console.log("isDisable due to missing formData fields");
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  console.log("disableCondition", disableCondition(currentStep))
   return (
     <>
       <Header />
@@ -397,9 +425,16 @@ const Bookshipment = () => {
                   >
                     Back
                   </button>
+
+
+
+
                   <button
                     className="next "
                     onClick={handleNextButtonClick}
+                    disabled={
+                      disableCondition(currentStep)
+                    }
 
                     style={{
                       borderRadius: "20px",

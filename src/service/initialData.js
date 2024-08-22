@@ -98,6 +98,8 @@ export const InitialShcdulePickupdata = {
   BookingData: {
     "AppoximateWeight": 1,
     "BookingAddress1": "",
+    "DutyConsigneePay": false,
+    "termandconditions": false,
     "BookingAddress2": "",
     "BookingCompanyName": "",
     "BookingContactPerson": "",

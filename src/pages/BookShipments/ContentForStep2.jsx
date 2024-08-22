@@ -140,10 +140,12 @@ export default function ContentForStep2({
               placeholder="Sender Mobile Number"
               defaultCountry="AE"
               name="SendersMobile"
-              value={formData["BookingData"]["SendersMobileNo"]}
+              value={formData["BookingData"]["SendersMobile"]}
               onChange={(v) => {
-                handleChangePhoneNo("SendersMobileNo", v)
+                handleChangePhoneNo("SendersMobile", v)
                 handleChangePhoneNo("BookingMobileNo", v)
+                handleChangePhoneNo("BookingPhoneNo", v)
+                handleChangePhoneNo("SendersPhone", v)
 
               }} />
             {/* <input

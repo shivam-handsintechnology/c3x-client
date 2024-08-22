@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Loader from "../../heplers/Loaders/Loader";
 import { toast } from "react-toastify";
 import { MinimumDate } from "../../heplers/DateValidator";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function ContentForStep3({
   SchadulePickupProps,
   onChangeData,
@@ -274,18 +274,25 @@ export default function ContentForStep3({
                 </div>
               )}
             </div>
-            <div className=" text-center">
-              <button type="button" className="btn btn-tracking bg-blue text-center pr-3 pl-3 mt-2" onClick={Calculate.handleCalculate}>
-                Calculate
-              </button>
-            </div>
+            <button type="button" className="btn btn-tracking bg-blue text-center pr-3 pl-3 mt-2"
+              onClick={Calculate.handleCalculate}>
+              Calculate
+            </button>
             {Calculate.CalucalteData && (
               <div className="labelthird " >
-                <span>
-                  NOTE : For  domestic deliveries, additional AED 50/- will be charged
+
+                <div className="text-end" style={{ fontSize: "20px" }} >  Total Amount: <span style={{ fontWeight: "600", fontSize: "20px" }}>{Calculate.CalucalteData.NetAmount}</span></div>
+                <span className="text-danger">
+                  NOTE : For Amazon FBA domestic deliveries, additional AED 50/- will be charged
                 </span>
-                <div className="text-center" style={{ fontWeight: "600", fontSize: "20px" }}>  <span className="labelthird text-center" >Amount:</span> <span>{Calculate.CalucalteData.NetAmount}</span></div>
+
                 <div className="row justify-content-center mt-3">
+                  <div className="col-md-12 col-xs-12 text-secondary  p-20">
+                    Payment Method
+                  </div>
+                  <br />
+                  <br />
+                  <br />
                   <div className="col-md-6 col-xs-4 text-start  p-0">
                     <div className="wizard-form-radio delevery-option text-start p-0 text-center">
                       <input
@@ -309,7 +316,12 @@ export default function ContentForStep3({
                         }
                       />
                       <span className="checkmark" />
-                      <label htmlFor="cod">Cash on Pickup</label>
+                      <label htmlFor="cod">
+                        <strong>
+
+                          Cash on Pickup
+                        </strong>
+                      </label>
                     </div>
                   </div>
 
@@ -335,13 +347,62 @@ export default function ContentForStep3({
                         }}
                       />
                       <span className="checkmark" />
-                      <label htmlFor="onlinepayment">Online Payment</label>
+                      <label htmlFor="onlinepayment">
+                        <strong>
+
+                          Online Payment
+                        </strong>
+                      </label>
                     </div>
                   </div>
                 </div>
 
+                <br />
+                <br />
+                <div className="col-md-12 col-xs-12 ">
+                  <div className=" row">
+                    <div className="col-md-8">
+                      <input
+                        type="checkbox"
+                        className="m-2"
+                        checked={formData["BookingData"]["DutyConsigneePay"]}
+                        onChange={(e) => {
+
+                          setFormData((prevData) => ({
+                            ...prevData,
+                            BookingData: {
+                              ...prevData.BookingData,
+                              DutyConsigneePay: e.target.checked
+                            },
+                          }))
+                        }}
+                      />
+                      <span className="checkmark" />
+                      <label htmlFor="onlinepayment">Destination Duties/Taxes will be applicable <span className="text-danger">*</span></label>
+                    </div>
+                    <div className="col-md-6">
+                      <input
+                        type="checkbox"
+                        className="m-2"
+                        checked={formData["BookingData"]["termandconditions"]}
+                        onChange={(e) => {
+                          setFormData((prevData) => ({
+                            ...prevData,
+                            BookingData: {
+                              ...prevData.BookingData,
+                              termandconditions: e.target.checked
+                            },
+                          }))
+                        }}
+                      />
+                      <span className="checkmark" />
+                      <a href="/terms-and-conditions" target="blank">Terms & Conditions <span className="text-danger">*</span></a>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
+
 
           </form>
         </div>
