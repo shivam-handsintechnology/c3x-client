@@ -281,6 +281,9 @@ export default function ContentForStep3({
             </div>
             {Calculate.CalucalteData && (
               <div className="labelthird " >
+                <span>
+                  NOTE : For  domestic deliveries, additional AED 50/- will be charged
+                </span>
                 <div className="text-center" style={{ fontWeight: "600", fontSize: "20px" }}>  <span className="labelthird text-center" >Amount:</span> <span>{Calculate.CalucalteData.NetAmount}</span></div>
                 <div className="row justify-content-center mt-3">
                   <div className="col-md-6 col-xs-4 text-start  p-0">
@@ -299,7 +302,7 @@ export default function ContentForStep3({
                             BookingData: {
                               ...prevData.BookingData,
                               PaidAmount: 0,
-                              CashOnPickup: 50,
+                              CashOnPickup: Calculate.CalucalteData.NetAmount + 50,
                             },
                           }))
                         }
@@ -325,7 +328,7 @@ export default function ContentForStep3({
                             ...prevData,
                             BookingData: {
                               ...prevData.BookingData,
-                              PaidAmount: 50,
+                              PaidAmount: Calculate.CalucalteData.NetAmount + 50,
                               CashOnPickup: 0,
                             },
                           }))

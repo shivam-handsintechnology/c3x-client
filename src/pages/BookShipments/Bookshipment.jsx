@@ -136,10 +136,11 @@ const Bookshipment = () => {
     try {
       console.log("dimension", formData["BookingData"]["Dimension"])
       let payload = {
-        "Destination": formData["BookingData"]["ReceiversCity"],
+
+        "Destination": formData["BookingData"]["Destination"],
         "Dimension": formData["BookingData"]["Dimension"] ? formData["BookingData"]["Dimension"] : "",
         "Origin": formData["BookingData"]["Origin"],
-        "Product": formData["BookingData"]["PackageType"],
+        "Product": formData["BookingData"]["ProductType"],
         "ServiceType": formData["BookingData"]["ServiceType"],
         "Weight": formData["BookingData"]["Weight"],
       }
@@ -147,7 +148,7 @@ const Bookshipment = () => {
       const res = await calculate(payload).unwrap()
       console.log(">>>>>>res", res)
       setCalucalteData(res.data)
-      handleChangeData("PaidAmount", res.data.NetAmount)
+      handleChangeData("CashOnPickup", res.data.NetAmount + 50)
     } catch (error) {
       console.log({ error })
       setCalucalteData(null)
