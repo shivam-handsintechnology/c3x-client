@@ -245,7 +245,7 @@ export default function ContentForStep2({
                 const selectedOption = e.target.options[e.target.selectedIndex]
                 const selectedId = selectedOption.getAttribute("id");
                 handleChangeData("Origin", selectedId)
-                handleChangeData(e.target.name.replace("Senders", "Booking"), e.target.value)
+                handleChangeData(e.target.name.replace("Senders", "Booking"), selectedId)
               }}
               className="thirststep "
               style={{

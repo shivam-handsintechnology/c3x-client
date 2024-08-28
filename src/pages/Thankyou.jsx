@@ -7,7 +7,7 @@ const Thankyou = () => {
     useEffect(() => {
         const redirectTimer = setTimeout(() => {
             // Redirect to another route after 3 seconds
-            window.location.href=("/")
+            window.location.href = ("/")
         }, 3000); // 3000 milliseconds = 3 seconds
 
         // Clean up the timer on component unmount
@@ -19,9 +19,9 @@ const Thankyou = () => {
             <Header />
             <div className="mt-5 mb-5 pt-5 pb-5 text-center">
                 <header className="site-header" id="header">
-                    <h1 className="site-header__title" data-lead-id="site-header-title">
+                    <h3 className="site-header__title" data-lead-id="site-header-title">
                         THANK YOU!
-                    </h1>
+                    </h3>
                 </header>
                 <div className="main-content">
                     <i className="fa fa-check main-content__checkmark" id="checkmark" />

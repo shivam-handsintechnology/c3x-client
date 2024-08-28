@@ -57,9 +57,9 @@ const ThankYouPage = () => {
                     href="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/default_thank_you.css"
                 />
                 <header className="site-header" id="header">
-                    <h1 className="site-header__title" style={{ fontSize: "5.25rem", color: "black" }} data-lead-id="site-header-title">
+                    <h3 className="site-header__title" style={{ fontSize: "5.25rem", color: "black" }} data-lead-id="site-header-title">
                         THANK YOU!
-                    </h1>
+                    </h3>
                 </header>
                 <div className="main-content">
                     <i className={`fa ${id === 'authorised' ? 'fa-check  bg-blue-color' : 'fa-close error'} main-content__checkmark`} id="checkmark" />

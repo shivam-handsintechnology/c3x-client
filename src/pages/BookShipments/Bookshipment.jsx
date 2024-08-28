@@ -17,6 +17,7 @@ import { validateSchadulePickupFormHomePageOne, validateSchadulePickupFormHomePa
 import { toast } from "react-toastify";
 import Footer from "../../Components/Common/Footer";
 import Header from "../../Components/Common/Header";
+import SmalLoader from "../../heplers/Loaders/SmallLoader";
 const Bookshipment = () => {
 
   const { state } = useLocation()
@@ -428,27 +429,27 @@ const Bookshipment = () => {
 
 
 
+                  {isPosting ? <SmalLoader /> :
+                    <button
+                      className="next "
+                      onClick={handleNextButtonClick}
+                      disabled={
+                        disableCondition(currentStep)
+                      }
 
-                  <button
-                    className="next "
-                    onClick={handleNextButtonClick}
-                    disabled={
-                      disableCondition(currentStep)
-                    }
+                      style={{
+                        borderRadius: "20px",
+                        width: "max-content",
 
-                    style={{
-                      borderRadius: "20px",
-                      width: "max-content",
+                        padding: "5px 60px",
+                        margin: "10px",
 
-                      padding: "5px 60px",
-                      margin: "10px",
+                        border: "none",
 
-                      border: "none",
-
-                    }}
-                  >
-                    {currentStep === 4 ? "Submit" : "Next"}
-                  </button>
+                      }}
+                    >
+                      {currentStep === 4 ? "Submit" : "Next"}
+                    </button>}
                 </div>)}
 
               </div>

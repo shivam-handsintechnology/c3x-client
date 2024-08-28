@@ -131,7 +131,10 @@ export default function ContentForStep3({ SchadulePickupProps, onChangeData, han
               defaultCountry="AE"
               name="ReceiversMobile"
               value={formData["BookingData"]["ReceiversMobile"]}
-              onChange={(v) => handleChangePhoneNo("ReceiversMobile", v)} />
+              onChange={(v) => {
+                handleChangePhoneNo("ReceiversPhone", v)
+                handleChangePhoneNo("ReceiversMobile", v)
+              }} />
 
           </div>
         </div>
@@ -189,7 +192,7 @@ export default function ContentForStep3({ SchadulePickupProps, onChangeData, han
                 CityHandle.Data.CityListLocation &&
                 CityHandle.Data.CityListLocation.length > 0 ? (
                 CityHandle.Data.CityListLocation.map((item, index) => (
-                  <option value={item.CityName} id={item.CityCode}>{item.CityName}</option>
+                  <option value={item.CityCode} id={item.CityCode}>{item.CityName}</option>
                 ))
               ) : (
                 <option value={""}>No City Found</option>
