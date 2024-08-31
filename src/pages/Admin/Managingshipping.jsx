@@ -128,7 +128,7 @@ const Managingshipping = (props) => {
     <main id="content" role="main">
       <div className="main-content">
         <div className="container-fluid">
-          <h2 className="page-title">Manage Shipping  | <PrepadAccountStatusLeftMoney/> </h2> 
+          <h2 className="page-title">Manage Shipping  | <PrepadAccountStatusLeftMoney /> </h2>
           <div className="card customcss">
             <div className="card-body">
               <Tabs
@@ -349,7 +349,7 @@ const Managingshipping = (props) => {
                           <>
                             <a
                               className="btn btn-success"
-                              href="https://www.c3xpress.com/Sample.xlsx"
+                              href="/Sample.xlsx"
                               download="Sample.xlsx"
                             >
                               Download Sample File

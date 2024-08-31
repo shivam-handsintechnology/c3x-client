@@ -156,7 +156,8 @@ export const InitialShcdulePickupdata = {
     "Weight": "",
     "ShipmentReadyTime": "",
     "ShipmentReadyDate": pickupdate(),
-
+    "CashonPickup": 0,
+    "PaidAmount": 0
   },
 }
 

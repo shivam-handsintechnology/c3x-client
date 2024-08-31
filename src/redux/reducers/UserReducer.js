@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-var initialState = {
-  access_token: localStorage.getItem("token"),
+const initialState = {
+  access_token: localStorage.getItem("token") ? localStorage.getItem("token") : "",
   data: null,
   Address: Date.now()
 };
@@ -24,9 +24,15 @@ export const UserInfo = createSlice({
         ...action.payload,
       };
     },
+    setUserLogout: (state, action) => {
+      state.access_token = ""
+      state.data = null
+      localStorage.removeItem("token")
+
+    },
   },
 });
 // Action creators are generated for each case reducer function
-export const { setUserDetails, setUserAdressChange } = UserInfo.actions;
+export const { setUserDetails, setUserAdressChange, setUserLogout } = UserInfo.actions;
 
 export default UserInfo.reducer;

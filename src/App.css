@@ -146,6 +146,15 @@
         text-align: center;
         font-size: 12px;
     }
+
+    h3.site-header__title.assasas {
+        padding-top: 37% !important;
+        font-size: 40px !important;
+    }
+
+    .main-conten.thankyounksj i {
+        font-size: 70px !important;
+    }
 }
 
 footer {
@@ -2163,10 +2172,13 @@ nav.secondheader.navbar.navbar-expand-md.navbar-light {
 }
 
 @media screen and (max-width: 767px) {
-    html,body{
+
+    html,
+    body {
         overflow-x: hidden;
         display: block;
     }
+
     .footer_form_outer {
         max-width: unset;
     }
@@ -4897,6 +4909,20 @@ ul.mb-3.nav.nav-tabs li {
     }
 
     .main-content__checkmark {
-        font-size: 9.75rem;
+        font-size: 6.75rem;
     }
+}
+
+.main-conten.thankyounksj {
+    text-align: center;
+}
+
+h3.site-header__title.assasas {
+    text-align: center;
+    padding-top: 8%;
+}
+
+button.sddsds.bg-blue.text-white {
+    padding: 10px 30px;
+    border-radius: 10px;
 }

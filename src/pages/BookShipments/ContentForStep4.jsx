@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { MinimumDate } from "../../heplers/DateValidator";
 import { Link, useNavigate } from "react-router-dom";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import SmalLoader from "../../heplers/Loaders/SmallLoader";
 export default function ContentForStep3({
   SchadulePickupProps,
@@ -18,17 +20,33 @@ export default function ContentForStep3({
   var { Data, setFormData, formData, errors, isPosting } =
     SchadulePickupProps;
 
-  // useEffect(() => {
-  //   //console.log("errors", errors);
-  //   if (errors.error) {
-  //     toast.error(errors.message);
-  //     Data = null;
-  //   }
-  // }, [errors]);
+
   const [isOnline, setisOnline] = useState(false)
   console.log("Caluclate", Calculate.CalucalteData)
 
+  const [selectedDate, setSelectedDate] = useState(new Date(formData["BookingData"]["ShipmentReadyDate"]));
 
+  const handleDateChange = (date) => {
+    if (date) {
+      const dayOfWeek = date.getDay();
+      if (dayOfWeek === 0) {
+        toast.error("Sunday is not allowed. Please select another date.");
+      } else {
+        setSelectedDate(date);
+        onChangeData(date);
+      }
+    }
+  };
+
+  const disablePastDates = (date) => {
+    const today = new Date();
+    return date < today;
+  };
+
+  const disableSundays = (date) => {
+    const dayOfWeek = date.getDay();
+    return dayOfWeek === 0;
+  };
   return (
     <div className="location-form mt-3 mb-2">
       <div className="text-center mt-2">
@@ -91,24 +109,12 @@ export default function ContentForStep3({
                   <div style={{ fontWeight: "600" }}>Pickup Date</div>
 
                 </label>
-                <input
-                  name="ShipmentReadyDate"
-                  onChange={(e) => {
-                    const selectedDate = new Date(e.target.value);
-                    const dayOfWeek = selectedDate.getDay();
-                    console.log("dayOfWeek", dayOfWeek)
-                    if (dayOfWeek === 0) {
-                      toast.error("Sunday is not allowed. Please select another date.");
-
-                    } else {
-
-                      onChangeData(e)
-                    }
-                  }}
-                  value={formData["BookingData"]["ShipmentReadyDate"]}
-                  type="date"
-                  min={MinimumDate()}
-                  className="form-control  "
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  minDate={new Date()} // Disable past dates
+                  filterDate={(date) => !disableSundays(date)} // Disable Sundays
+                  className="form-control"
                   style={{ border: "none", width: "140px" }}
                 />
 
@@ -310,9 +316,12 @@ export default function ContentForStep3({
           {Calculate.CalucalteData && (
             <div className="labelthird " >
 
-              <div className="text-end" style={{ fontSize: "20px" }} >  Total Amount: <span style={{ fontWeight: "600", fontSize: "20px" }}>{Calculate.CalucalteData.NetAmount}</span></div>
+              <div className="text-end" style={{ fontSize: "20px" }} >  Total Amount: <span style={{ fontWeight: "600", fontSize: "20px" }}>AED {Calculate.CalucalteData.NetAmount}</span></div>
               <span className="text-danger">
-                NOTE : For Amazon FBA domestic deliveries, additional AED 50/- will be charged
+                {
+                  formData["BookingData"]["ShipmentType"] == "dom" ? ' NOTE : For Amazon FBA domestic deliveries, additional AED 50/- will be charged' : ' NOTE : Additional AED 50/- will be charged'
+                }
+
               </span>
 
               <div className="row justify-content-center mt-3">
@@ -338,7 +347,7 @@ export default function ContentForStep3({
                           BookingData: {
                             ...prevData.BookingData,
                             PaidAmount: 0,
-                            CashOnPickup: Calculate.CalucalteData.NetAmount + 50,
+                            CashonPickup: Calculate.CalucalteData.NetAmount,
                           },
                         }))
                       }
@@ -369,8 +378,8 @@ export default function ContentForStep3({
                           ...prevData,
                           BookingData: {
                             ...prevData.BookingData,
-                            PaidAmount: Calculate.CalucalteData.NetAmount + 50,
-                            CashOnPickup: 0,
+                            PaidAmount: Calculate.CalucalteData.NetAmount,
+                            CashonPickup: Calculate.CalucalteData.NetAmount,
                           },
                         }))
                       }}

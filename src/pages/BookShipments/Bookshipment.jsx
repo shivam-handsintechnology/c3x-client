@@ -155,7 +155,7 @@ const Bookshipment = () => {
         return;
       }
       setCalucalteData(res.data)
-      handleChangeData("CashOnPickup", res.data.NetAmount + 50)
+      handleChangeData("CashonPickup", res.data.NetAmount)
     } catch (error) {
       console.log({ error })
       setCalucalteData(null)
@@ -382,7 +382,8 @@ const Bookshipment = () => {
     return false;
   };
 
-  console.log("disableCondition", disableCondition(currentStep))
+  console.log("CashOnPickup", formData)
+
   return (
     <>
       <Header />

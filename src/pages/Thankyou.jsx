@@ -19,7 +19,7 @@ const Thankyou = () => {
             <Header />
             <div className="mt-5 mb-5 pt-5 pb-5 text-center">
                 <header className="site-header" id="header">
-                    <h3 className="site-header__title" data-lead-id="site-header-title">
+                    <h3 className="site-header__title sdsdsdas" data-lead-id="site-header-title">
                         THANK YOU!
                     </h3>
                 </header>
