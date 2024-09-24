@@ -1,6 +1,6 @@
 import { Tab } from "bootstrap";
 import React, { useEffect, useRef, useState } from "react";
-import { useGetShipmentHistoryDataMutation, usePostAirwayBillPDFFormatDataMutation } from "../../service/apiServices";
+import { useGetShipmentHistoryDataMutation, usePostAirwayBillPDFFormatDataMutation, usePostCityListMutation, useGetUserServiceTypesDataQuery } from "../../service/apiServices";
 import { ManageShipingIntialData } from "../../service/initialData";
 import useDataFetch from "../../hooks/DataFetchHook";
 import usePagination from "../../hooks/UsePagination";
@@ -14,10 +14,23 @@ import ProtectComponent from "../Common/ProtectComponent";
 import ErrorComponent from "../../heplers/ErrorComponent";
 import Loader from "../../heplers/Loaders/Loader";
 import { useSelector } from "react-redux";
+const fieldsToReset = [
+  { value: "AirWayBillNo", label: "AirWay Bill No" },
+  { value: "Consignee", label: "Consignee" },
+  { value: "ConsigneeCity", label: "Consignee City" },
+  { value: "ConsigneeName", label: "Consignee Name" },
+  { value: "ConsigneePhone", label: "Consignee Phone" },
+  { value: "ServiceType", label: "ServiceType" },
+  { value: "Shipper", label: "Shipper" },
+  { value: "ShipperPhone", label: "Shipper Phone" },
+  { value: "ShipperReference", label: "Shipper Reference" },
+];
 // import ReactPaginate from "react-paginate";
 const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
-
+  const { data, error, isLoading, refetch } = useGetUserServiceTypesDataQuery();
+  const CityHandle = useFormSubmission(usePostCityListMutation, { Country: "" })
   const userData = useSelector((state) => state.UserReducer);
+
   const PdfForm = useFormSubmission(usePostAirwayBillPDFFormatDataMutation, {
     AirwayBillNumber: "",
     RequestUser: "",
@@ -34,7 +47,7 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
       { ...ManageShipingIntialData, AccountNo: userAuthData.data && userAuthData.data.data.user.AccountNo }
     );
   const [currentData, setcurrentMovies] = useState([]);
-  const [limit, setLimit] = useState(10);
+  const [fieldname, setfieldname] = useState("AirWayBillNo");
   // Number of items to display per page
   const { pageComponent, setNumberOfPages, pageNumber, itemsPerPage } = UsePagination()
 
@@ -45,7 +58,7 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
       let data = Status !== "all" ? Data.AwbList.filter((item) => item.Status == Status) : Data.AwbList
       setNumberOfPages(Math.ceil(data.length / itemsPerPage))
       setcurrentMovies(data.slice((pageNumber - 1) * itemsPerPage, (pageNumber - 1) * itemsPerPage + itemsPerPage))
-    }else{
+    } else {
       setNumberOfPages(0)
     }
 
@@ -53,20 +66,48 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    // List of fields with labels and default values to reset
+
+
+    // If the current field is in the fieldsToReset list, reset the other fields
+    if (fieldsToReset.some(field => field.value === name)) {
+      setFormData(prev => {
+        // Iterate through fieldsToReset and reset their values
+        const resetFields = fieldsToReset.reduce((acc, field) => {
+          if (prev.hasOwnProperty(field.value)) {
+            acc[field.value] = ""; // Set each field to its default value (empty string)
+          }
+          return acc;
+        }, {});
+
+        // Return the updated form data with reset fields and the updated current field
+        return {
+          ...prev,
+          ...resetFields,
+          [name]: value // Set the new value for the field being changed
+        };
+      });
+      return;
+    }
+
+    // For all other fields, update their value as usual
     setFormData(prev => ({ ...prev, [name]: value }));
   };
+
+
 
   function handleDownloadExcel() {
     if (!Data || (Data && Data.AwbList.length === 0)) {
       alert("Data is not available");
     } else {
-      
+
       let data = Data.AwbList.map((item) => {
-         const {Rate, ...rest} = item
+        const { Rate, ...rest } = item
         return rest;
       });
-       let header = Object.keys(data[0])
-    
+      let header = Object.keys(data[0])
+
 
 
       downloadExcel({
@@ -86,7 +127,9 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
   useEffect(() => {
     PdfForm.handleSubmit()
   }, [PdfForm.formData.AirwayBillNumber])
-
+  useEffect(() => {
+    CityHandle.handleSubmit()
+  }, [])
   const startIndex = (pageNumber - 1) * itemsPerPage;
 
   return (
@@ -142,18 +185,66 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
         </div>
         <div className="col-lg-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Airway Bill No
+            {fieldsToReset.find((item) => item.value === fieldname).label}
           </label>
-          <input
-            type="text"
-            name="AirWayBillNo"
-            value={formData.AirWayBillNo}
-            onChange={handleChange}
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="search by airwaybill number, shipper name, receiver name, city"
-            placeholder="Search by Airwaybill Number, Shipper Name, Receiver Name, City"
-          />
+          <select value={fieldname} name={fieldname} onChange={(e) => {
+            setfieldname(e.target.value)
+            setFormData(prev => ({ ...prev, [fieldname]: "" }));
+          }}>
+            {
+              fieldsToReset.map((item) => (
+                <option value={item.value}>
+                  {item.label}
+                </option>
+              ))
+            }
+          </select>
+          {
+            fieldname === "ConsigneeCity" ?
+              (<select
+                name={fieldname}
+                value={formData[fieldname]}
+                onChange={handleChange}
+                className="form-control"
+              >
+                <option value={""}>Select City</option>
+                {!CityHandle.errors.loading &&
+                  CityHandle.Data && CityHandle.Data.CityListLocation &&
+                  CityHandle.Data.CityListLocation.length > 0 ?
+                  CityHandle.Data.CityListLocation.map((item, index) => (
+                    <option value={item.CityCode} >{item.CityName}</option>
+                  )) : <option value={""}>No City Found</option>
+                }
+              </select>
+              )
+
+              : fieldname === "ServiceType" ? (
+                <select
+                  className="form-control"
+                  name={fieldname}
+                  value={formData[fieldname]}
+                  onChange={handleChange}
+                >
+                  <option value={""}>Select Service Type</option>
+                  {data && data.data.ServiceType && data.data.ServiceType.length > 0 ? data?.data?.ServiceType.map((item, index) => {
+                    return <option value={item.value}>{item.title}</option>;
+                  }) : <option> No Options Available</option>}
+                </select>
+              )
+                : (
+
+                  <input
+                    type="text"
+                    name={fieldname}
+                    value={formData[fieldname]}
+                    onChange={handleChange}
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="search "
+                    placeholder="Search"
+                  />
+                )
+          }
         </div>
         {/* <div className="col-lg-3 mb-3">
       <label htmlFor="exampleInputPassword1" className="form-label">
@@ -192,7 +283,7 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
       {errors.loading ? <Loader /> : errors.error ? (<ErrorComponent message={errors.message} />) : (<>
         {currentData.length > 0 && (
           <select value={Status} onChange={(e) => {
-           
+
             if (e.target.value === "Pending") {
               setStatus("Pending")
             } else if (e.target.value === "Delivered") {

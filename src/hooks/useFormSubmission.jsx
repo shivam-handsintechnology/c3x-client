@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber } from "react-phone-number-input";
 
 const useFormSubmission = (mutationHook, initialFormData, validate, toasterror) => {
-
+    const [isPhoneValid, setIsPhoneValid] = useState(true);
     const [formData, setFormData] = useState(initialFormData);
     const [Data, setData] = useState(null);
     const [errors, setErrors] = useState({ loading: false, error: false, message: '' });
@@ -15,9 +16,10 @@ const useFormSubmission = (mutationHook, initialFormData, validate, toasterror) 
             try {
                 // Create a copy of the formData object to avoid mutating the original
                 const formattedData = { ...formData };
-
-
-
+                if (!isPhoneValid) {
+                    toast.error("Please enter valid Mobile No Or Phone No");
+                    return
+                }
                 setErrors({ loading: true, error: false });
                 const res = await mutate(formattedData).unwrap();
                 //console.log(res);
@@ -42,6 +44,28 @@ const useFormSubmission = (mutationHook, initialFormData, validate, toasterror) 
 
     const handleChange = (name, value) => {
         // //console.log("name and value",name, value);
+        if (name === "telephone_number") {
+            if (value === '' || value === undefined) {
+                setIsPhoneValid(true);
+            } else {
+                setIsPhoneValid(isValidPhoneNumber(value));
+                // if (!isValidPhoneNumber(value)) {
+                //     toast.error("Please enter valid Mobile No Or Phone No");
+                //     return
+                // }
+            }
+        }
+        else if (name === "phone_number") {
+            if (value === '' || value === undefined) {
+                setIsPhoneValid(true);
+            } else {
+                setIsPhoneValid(isValidPhoneNumber(value));
+                // if (!isValidPhoneNumber(value)) {
+                //     toast.error("Please enter valid Mobile No Or Phone No");
+                //     return
+                // }
+            }
+        }
         if (formData.AirwayBillData) {
             setFormData((prevData) => ({
                 ...prevData,

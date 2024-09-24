@@ -36,13 +36,14 @@ const ManageSubUsers = (props) => {
     useEffect(() => {
         refetch();
     }, [refetch, Data, IsDelete]);
-    console.log("i am testing",{data}, {error},)
+    console.log("i am testing", { data }, { error },)
     useEffect(() => {
         if (!error && data && data.data) {
+
             setNumberOfPages(Math.ceil(data.data.totalPages));
         }
         if (error) {
-            
+
             setNumberOfPages(0);
         }
 

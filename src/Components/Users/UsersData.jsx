@@ -6,8 +6,9 @@ import PhoneInput from 'react-phone-number-input'
 import { useGetServiceTypesDataQuery, usePostCityListMutation, useGetCountryMasterQuery } from "../../service/apiServices";
 import Loader from "../../heplers/Loaders/Loader";
 import useFormSubmission from "../../hooks/useFormSubmission";
+import EditUser from "./EditUser";
 const UsersData = (props) => {
-  const CountryMaster = useGetCountryMasterQuery(props.formData.address && props.formData.address?.Country ? props.formData?.address.Country : "");
+  const CountryMaster = useGetCountryMasterQuery();
   const CityHandle = useFormSubmission(usePostCityListMutation, { Country: props.formData?.address?.Country })
 
   let UserData = useSelector((state) => state.UserReducer);
@@ -131,130 +132,12 @@ const UsersData = (props) => {
 
       <Modal size={"lg"} show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ fontSize: '18px' }}>Edit {props.isAdmin ? "Add User" : "Sub User"}</Modal.Title>
+          <Modal.Title style={{ fontSize: '18px' }}>Edit {props.isAdmin ? " User" : "Sub User"}</Modal.Title>
         </Modal.Header>
         <Modal.Body><form method="post" onSubmit={props.handleSubmit}>
           {props.formData && (
             <div className="footer_form_outer">
-              <label className="form-label">Full Name</label>
-              <input
-                placeholder={"Full Name"}
-                name="Senders Contact Person"
-                className="form-control mb-3"
-                value={props.formData?.address?.SendersContactPerson}
-                onChange={(e) => props.setFormData(prev => ({ ...prev, address: { ...prev.address, SendersContactPerson: e.target.value } }))}
-                autoComplete="off"
-
-                required=""
-                type="text"
-              />
-              <label className="form-label">UserName</label>
-              <input
-                placeholder={"UserName"}
-                name="username"
-                className="form-control mb-3"
-                value={props.formData["username"]}
-                onChange={(e) => props.setFormData(prev => ({ ...prev, username: e.target.value }))}
-                autoComplete="off"
-
-                required=""
-                type="text"
-              />
-              <label className="form-label">Password</label>
-              <input
-                placeholder={"Password"}
-                name="password"
-                className="form-control mb-3"
-                value={props.formData["password"]}
-                onChange={(e) => props.setFormData(prev => ({ ...prev, password: e.target.value }))}
-                autoComplete="off"
-                required=""
-                type="text"
-              />
-              <label className="form-label">Account No</label>
-              <input
-                placeholder={"Account No"}
-                name="AccountNo"
-                className="form-control"
-                value={props.formData["AccountNo"]}
-                onChange={(e) => props.setFormData(prev => ({ ...prev, AccountNo: e.target.value }))}
-                autoComplete="off"
-
-                required=""
-                type="text"
-              />
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Country
-              </label>
-              <select
-                name="Country"
-                onChange={(e) => handleChnageAddress(e.target.name, e.target.value)}
-                value={props.formData?.address?.Country}
-                className="form-control"
-              >
-                <option value={""}>Select Country</option>
-                {!CountryMaster.isLoading && CountryMaster.data.data.CountryListLocation
-                  && CountryMaster.data.data.CountryListLocation.length > 0 &&
-                  CountryMaster.data.data.CountryListLocation.map((item, index) => (
-                    <option value={item.CountryCode}>{item.CountryName}</option>
-                  ))}
-              </select>
-
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                City
-              </label>
-              <select
-                name="City"
-
-                onChange={(e) => {
-                  const selectedOption = e.target.options[e.target.selectedIndex]
-                  const selectedId = selectedOption.getAttribute("id");
-                  handleChnageAddress("Origin", selectedId)
-                  handleChnageAddress(e.target.name, e.target.value)
-                }}
-                value={props.formData?.address?.City}
-                className="form-control"
-              >
-                <option value={""}>Select City</option>
-                {!CityHandle.errors.loading &&
-                  CityHandle.Data && CityHandle.Data.CityListLocation &&
-                  CityHandle.Data.CityListLocation.length > 0 ?
-                  CityHandle.Data.CityListLocation.map((item, index) => (
-                    <option value={item.CityName} id={item.CityCode}>{item.CityName}</option>
-                  )) : <option value={""}>City Not Found</option>
-                }
-              </select>
-
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Phone
-              </label>
-              <PhoneInput
-                className="form-control"
-                name="phone_number"
-                value={props.formData?.address?.phone_number}
-                international
-                placeholder="Phone  Number"
-                //  defaultCountry={props.formData?.address?.Country}
-                onChange={(v) => {
-                  handleChnageAddress("phone_number", v);
-                }}
-              />
-
-
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Telephone Number
-              </label>
-              <PhoneInput
-                className="form-control"
-                name="telephone_number"
-                value={props.formData?.address?.telephone_number}
-                international
-                placeholder="telephone number"
-                // defaultCountry={props.formData?.address?.telephone_number}
-                onChange={(v) => {
-                  handleChnageAddress("telephone_number", v);
-                }}
-              />
+              <EditUser formData={props.formData} setFormData={props.setFormData} CountryMaster={CountryMaster} CityHandle={CityHandle} handleChnageAddress={handleChnageAddress} />
               <div className="row">
                 {UserData && UserData.data.data.user.Role == "User" && <div className={"col-lg-12 col-md-12"} style={{ marginTop: "30px" }}>
                   <table className="table" style={{ border: "none" }}>
@@ -280,33 +163,6 @@ const UsersData = (props) => {
                       </tr>
                     </thead>
                     <tbody>
-
-                      {/* <tr>
-                          <td className="text-uppercase">MANAGE SUB USERS</td>
-                          <td>Manage Sub Users</td>
-                          <td className="width-450" />
-                          <td>
-                            <div
-                              className="custom-control custom-checkbox mb-3 accesibilityy"
-                              style={{ justifyContent: "center", display: "flex" }}
-                            >
-                              <input
-                                type="checkbox"
-                                id="manage_sub_users"
-                                checked={props.formData.dashboard.Manage_Sub_Users}
-                                onChange={onChangeData}
-                                name="Manage_Sub_Users"
-                                className="custom-control-input create-booking"
-
-                                defaultValue="Manage Sub Users"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="manage_sub_users"
-                              />
-                            </div>
-                          </td>
-                        </tr> */}
 
 
                       <tr>
@@ -532,7 +388,7 @@ const UsersData = (props) => {
             Close
           </Button>
           <Button variant="primary" onClick={() => {
-            props.handleClose()
+
             props.handleSubmit()
           }}>
 

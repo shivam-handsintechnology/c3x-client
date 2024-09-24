@@ -6,18 +6,19 @@ function pickupdate() {
 export const ManageShipingIntialData = {
   // "AccountNo": "10002",
   "AirWayBillNo": "",
+
   "Consignee": "",
   "ConsigneeCity": "",
   "ConsigneeName": "",
   "ConsigneePhone": "",
   "ServiceType": "",
-  "ShipmentFromDate": todaydate(),
-  "ShipmentToDate": nextday(),
   "Shipper": "",
   "ShipperPhone": "",
   "ShipperReference": "",
   "Country": "AE",
-  "CreatedBy": ""
+  "CreatedBy": "",
+  "ShipmentFromDate": todaydate(),
+  "ShipmentToDate": nextday(),
 }
 export const ManageShipingheader = ["Awbno",
   "Consignee",

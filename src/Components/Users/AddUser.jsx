@@ -208,6 +208,7 @@ const AddUser = ({ setIsDelete, changeAvailability, setIsAvailable, userAuthData
                 </label>
                 <PhoneInput
                   // className="form-control"
+                  countryCallingCodeEditable={false}
                   name="phone_number"
                   value={formData["phone_number"]}
                   international
@@ -224,6 +225,7 @@ const AddUser = ({ setIsDelete, changeAvailability, setIsAvailable, userAuthData
                 </label>
                 <PhoneInput
                   // className="form-control"
+                  countryCallingCodeEditable={false}
                   name="telephone_number"
                   value={formData["telephone_number"]}
                   international

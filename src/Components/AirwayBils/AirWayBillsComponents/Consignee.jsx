@@ -102,6 +102,7 @@ const Consignee = (props) => {
                 name="ReceiversPhone"
                 value={formData.AirwayBillData.ReceiversPhone}
                 international
+                countryCallingCodeEditable={false}
                 placeholder="Telephone Number"
                 defaultCountry="AE"
                 onChange={(v) => {
@@ -118,6 +119,7 @@ const Consignee = (props) => {
                 name="ReceiversMobile"
                 value={formData.AirwayBillData.ReceiversMobile}
                 international
+                countryCallingCodeEditable={false}
                 placeholder="Reciever Mobile  Number"
                 defaultCountry="AE"
                 onChange={(v) => {

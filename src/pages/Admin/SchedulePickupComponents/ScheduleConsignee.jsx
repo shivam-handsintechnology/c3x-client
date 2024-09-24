@@ -127,6 +127,7 @@ const ScheduleConsignee = ({
             </div>
             <div className="col-lg-6 mb-3">
               <PhoneInput
+                countryCallingCodeEditable={false}
                 defaultCountry={formData["BookingData"]["ReceiversCountry"]}
                 international
                 placeholder={"Telephone Number"}
@@ -137,6 +138,7 @@ const ScheduleConsignee = ({
             </div>
             <div className="col-lg-6 mb-3">
               <PhoneInput
+                countryCallingCodeEditable={false}
                 defaultCountry={formData["BookingData"]["ReceiversCountry"]}
                 international
                 placeholder={"Mobile No"}

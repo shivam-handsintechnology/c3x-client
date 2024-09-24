@@ -263,6 +263,7 @@ function Register() {
 
                     <PhoneInput
                       name="phone_number"
+                      countryCallingCodeEditable={false}
                       value={formData["phone_number"]}
                       international
                       placeholder="Phone  Number"
@@ -278,6 +279,7 @@ function Register() {
                       Telephone Number
                     </label>
                     <PhoneInput
+                      countryCallingCodeEditable={false}
                       name="telephone_number"
                       value={formData["telephone_number"]}
                       international

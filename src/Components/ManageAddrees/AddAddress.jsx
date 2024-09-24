@@ -173,6 +173,7 @@ const AddAddress = ({ setIsDelete, changeAvailability, setIsAvailable }) => {
                   name="telephone_number"
                   value={formData["telephone_number"]}
                   international
+                  countryCallingCodeEditable={false}
                   placeholder="Telephone Number"
                   defaultCountry={formData["Country"]}
                   onChange={(v) => {
@@ -222,6 +223,7 @@ const AddAddress = ({ setIsDelete, changeAvailability, setIsAvailable }) => {
                   Phone
                 </label>
                 <PhoneInput
+                  countryCallingCodeEditable={false}
                   name="phone_number"
                   value={formData["phone_number"]}
                   international

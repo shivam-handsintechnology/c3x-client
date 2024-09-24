@@ -126,6 +126,7 @@ export default function ContentForStep3({ SchadulePickupProps, onChangeData, han
           <div className="m-2">
             <label style={{ fontWeight: "600" }}>Mobile Number</label>
             <PhoneInput
+              countryCallingCodeEditable={false}
               international
               placeholder="Receiver Mobile Number"
               defaultCountry="AE"

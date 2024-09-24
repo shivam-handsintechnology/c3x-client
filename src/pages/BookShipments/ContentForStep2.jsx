@@ -136,6 +136,7 @@ export default function ContentForStep2({
           <div className="m-2">
             <label style={{ fontWeight: "600" }}>Mobile Number</label>
             <PhoneInput
+              countryCallingCodeEditable={false}
               international
               placeholder="Sender Mobile Number"
               defaultCountry="AE"

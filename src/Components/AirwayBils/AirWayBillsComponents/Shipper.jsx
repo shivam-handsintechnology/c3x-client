@@ -168,6 +168,7 @@ const Shipper = (props) => {
                 name="SendersPhone"
                 value={formData.AirwayBillData.SendersPhone}
                 international
+                countryCallingCodeEditable={false}
                 placeholder="Telephone Number"
                 defaultCountry="AE"
                 onChange={(v) => {
@@ -179,6 +180,7 @@ const Shipper = (props) => {
             <div className="col-lg-6 mb-3">
               <PhoneInput
                 name="SendersMobile"
+                countryCallingCodeEditable={false}
                 value={formData.AirwayBillData.SendersMobile}
                 international
                 placeholder="Sender Mobile  Number"

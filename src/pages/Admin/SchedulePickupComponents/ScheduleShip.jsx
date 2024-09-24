@@ -176,6 +176,7 @@ const ScheduleShip = ({ formData, handleChange, setFormData, Countryquery, setCo
                 <div className="col-lg-6 mb-3">
 
                   <PhoneInput
+                    countryCallingCodeEditable={false}
                     international
                     placeholder="Telephone Number"
                     defaultCountry="AE"
@@ -188,6 +189,7 @@ const ScheduleShip = ({ formData, handleChange, setFormData, Countryquery, setCo
                 </div>
                 <div className="col-lg-6 mb-3">
                   <PhoneInput
+                    countryCallingCodeEditable={false}
                     international
                     placeholder="Mobile Number"
                     defaultCountry="AE"

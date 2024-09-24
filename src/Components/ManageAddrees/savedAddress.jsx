@@ -229,11 +229,11 @@ const SavedAddress = (props) => {
                                         {item.address_line_1 +
                                           item.address_line_2 +
                                           ", " +
-                                          item.ZipCode?item.ZipCode:"" +
+                                          item.ZipCode ? item.ZipCode : "" +
                                           ", " +
                                           item.City +
                                           ", " +
-                                          getcountryNameByCode(item.Country)}
+                                        getcountryNameByCode(item.Country)}
                                       </span>
                                       <span className="address-edit-link">
                                         <span className="a-declarative">
@@ -351,12 +351,12 @@ const SavedAddress = (props) => {
                                         SendersAddress1: UseAddress.address_line_1 ? UseAddress.address_line_1 : "",
                                         SendersAddress2: UseAddress.address_line_2 ? UseAddress.address_line_2 : "",
                                         SendersCity: UseAddress.City,
-                                        Origin: UseAddress.Origin?UseAddress.Origin:"",
+                                        Origin: UseAddress.Origin ? UseAddress.Origin : "",
                                         SendersPinCode: UseAddress.ZipCode ? UseAddress.ZipCode : "",
                                         SendersCountry: UseAddress.Country ? UseAddress.Country : "AE",
                                         SendersPhone: UseAddress.telephone_number ? UseAddress.telephone_number : "",
                                         SendersMobile: UseAddress.phone_number ? UseAddress.phone_number : "",
-                                        SendersEmail: UseAddress.SendersEmail ? UseAddress.SendersEmail:"",
+                                        SendersEmail: UseAddress.SendersEmail ? UseAddress.SendersEmail : "",
                                         BookingCreatedBy: props.user.AccountNo,
                                         SendersCompany: UseAddress.company_name ? UseAddress.company_name : "",
                                         SendersContactPerson: UseAddress.SendersContactPerson ? UseAddress.SendersContactPerson : "",
@@ -366,8 +366,8 @@ const SavedAddress = (props) => {
                                         BookingPinCode: UseAddress.ZipCode ? UseAddress.ZipCode : "",
                                         BookingCountry: UseAddress.Country ? UseAddress.Country : "AE",
                                         BookingPhone: UseAddress.telephone_number ? UseAddress.telephone_number : "",
-                                        BookingMobile: UseAddress.phone_number?UseAddress.phone_number:"",
-                                        BookingEmail:UseAddress.SendersEmail ? UseAddress.SendersEmail:"",
+                                        BookingMobile: UseAddress.phone_number ? UseAddress.phone_number : "",
+                                        BookingEmail: UseAddress.SendersEmail ? UseAddress.SendersEmail : "",
                                         BookingCompanyName: UseAddress.company_name ? UseAddress.company_name : "",
                                         BookingContactPerson: UseAddress.SendersContactPerson ? UseAddress.SendersContactPerson : "",
 
@@ -391,9 +391,9 @@ const SavedAddress = (props) => {
                                         SendersPhone: UseAddress.telephone_number ? UseAddress.telephone_number : "",
                                         SendersMobile: UseAddress.phone_number ? UseAddress.phone_number : "",
                                         SendersCompany: UseAddress.company_name ? UseAddress.company_name : "",
-                                      
-                                        SendersContactPerson:UseAddress.SendersContactPerson ? UseAddress.SendersContactPerson : "",
-                                        SendersEmail:UseAddress.SendersEmail ? UseAddress.SendersEmail : "",
+
+                                        SendersContactPerson: UseAddress.SendersContactPerson ? UseAddress.SendersContactPerson : "",
+                                        SendersEmail: UseAddress.SendersEmail ? UseAddress.SendersEmail : "",
 
                                       },
                                     }));
@@ -618,6 +618,7 @@ const SavedAddress = (props) => {
 
                 <PhoneInput
                   // className="form-control"
+                  countryCallingCodeEditable={false}
                   placeholder={"Phone Number"}
                   name="phone_number"
                   value={
@@ -642,6 +643,7 @@ const SavedAddress = (props) => {
                 <PhoneInput
                   // className="form-control"
                   placeholder={"Telephone Number"}
+                  countryCallingCodeEditable={false}
                   name="telephone_number"
                   value={
                     selectedAddress && selectedAddress.name == "Edit"

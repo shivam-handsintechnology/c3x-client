@@ -250,6 +250,7 @@ const AddressData = (props) => {
                 <PhoneInput
                   // className="form-control"
                   placeholder={"Phone Number"}
+                  countryCallingCodeEditable={false}
                   name="phone_number"
                   value={props.formData["phone_number"]}
                   onChange={(v) => UpdateAddress("phone_number", v, props.formData._id)}
@@ -260,6 +261,7 @@ const AddressData = (props) => {
 
                 <PhoneInput
                   // className="form-control"
+                  countryCallingCodeEditable={false}
                   placeholder={"Telephone Number"}
                   name="telephone_number"
                   value={props.formData["telephone_number"]}
