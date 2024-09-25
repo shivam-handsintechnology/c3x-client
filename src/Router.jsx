@@ -44,6 +44,7 @@ import { toast } from 'react-toastify';
 import SchadulePickupThankYouPage from './pages/Admin/SchedulePickupComponents/SchadulePickupThankYouPage';
 import InternationalRatefinder from './pages/Ratefinder/InternationalRatefinder';
 import Thankyou from './pages/Thankyou';
+import TransactionHistory from './Components/AirwayBils/AirWayBillHistory/TransactionHistory';
 
 const Router = () => {
     const dispatch = useDispatch();
@@ -84,6 +85,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home userAuthData={ProfileData} />} />
+                <Route path="/TransactionHistory" element={<TransactionHistory userAuthData={ProfileData} />} />
                 <Route path="/help-desk" element={<HelpDesk />} />
                 <Route path="/Helpdesk" element={<Navigate replace to="/help-desk" />} />
                 <Route path='/Thankyou/:id' element={<ThankYouPage />} />
