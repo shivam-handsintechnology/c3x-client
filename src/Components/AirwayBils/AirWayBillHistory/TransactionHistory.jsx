@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Modal, Button, Row, Col, Tabs, Tab } from "react-bootstrap";
 import Brief from "../AirWayBillHistory/Brief"
 import History from "../AirWayBillHistory/History"
-const TransactionHistory = ({ awbNo, onClose }) => {
+import { useSelector } from "react-redux";
+const TransactionHistory = ({ AwbDetails, onClose }) => {
+    const { data } = useSelector((state) => state.TrackingDetailsReducer)
+    let [{ AirWayBillNo = "", Destination = "", ForwardingNumber = "", Origin = "", ShipmentProgress = 0, ShipperReference = "", TrackingLogDetails = [] }] = data
+    console.log(AwbDetails)
+    const last = TrackingLogDetails[TrackingLogDetails.length - 1];
 
     const [key, setKey] = useState("home");
     const [activeTab, setActiveTab] = useState("tab1");
-
     const handleTabClick = (tab) => {
         setActiveTab(tab);
     };
@@ -16,8 +20,8 @@ const TransactionHistory = ({ awbNo, onClose }) => {
 
                 <Row style={{ width: "100%" }}>
                     <Col lg={3} md={6}>
-                        <h6 className="text-dark">tracking:{awbNo}</h6>
-                        <h6 className="text-dark">Shipper Ref : 2150151072</h6>
+                        <h6 className="text-dark">tracking:{AwbDetails?.Awbno}</h6>
+                        <h6 className="text-dark">Shipper Ref : {AwbDetails?.ShipperReference}</h6>
 
                     </Col>
                     <Col lg={3} md={6}>
@@ -27,7 +31,7 @@ const TransactionHistory = ({ awbNo, onClose }) => {
                             </div>
                             <span className="mx-2">
                                 <h6 className="text-dark"> In scan</h6>
-                                <h6 className="text-dark">11th Sep 2024 | 08:45 am</h6>
+                                <h6 className="text-dark">{AwbDetails?.StatusDate}</h6>
                             </span>
                         </div>
 
@@ -40,7 +44,7 @@ const TransactionHistory = ({ awbNo, onClose }) => {
 
                             <span className="mx-2">
                                 <h6 className="text-dark">   Airway Created on</h6>
-                                <h6 className="text-dark">11th Sep 2024 | 08:45 am</h6>
+                                <h6 className="text-dark"> {AwbDetails?.Dated}</h6>
                             </span>
                         </div>
 
@@ -85,12 +89,12 @@ const TransactionHistory = ({ awbNo, onClose }) => {
                     <div className="tab-content">
                         {activeTab === "tab1" && (
                             <div>
-                               <Brief/>
+                                <Brief AwbDetails={AwbDetails} />
                             </div>
                         )}
                         {activeTab === "tab2" && (
                             <div>
-                                <History/>
+                                <History AwbDetails={AwbDetails} />
                             </div>
                         )}
                         {activeTab === "tab3" && (
@@ -100,7 +104,7 @@ const TransactionHistory = ({ awbNo, onClose }) => {
                         )}
                         {activeTab === "tab4" && (
                             <div className="blocks-tab">
-                               
+
                                 <p>Proof of Return.</p>
                             </div>
                         )}
@@ -108,12 +112,8 @@ const TransactionHistory = ({ awbNo, onClose }) => {
 
 
                 </div>
-                <h5>Transaction History for AWB No: {awbNo}</h5>
-                {/* <p>
-                
-                    This is a random text inside the modal representing the transaction history.
-                    You can replace this with dynamic content related to the Airway Bill Number {awbNo}.
-                </p> */}
+                <h5>Transaction History for AWB No: {AwbDetails?.awbNo}</h5>
+
             </Modal.Body>
 
         </Modal>
