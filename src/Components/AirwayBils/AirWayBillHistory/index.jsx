@@ -14,6 +14,7 @@ import ProtectComponent from "../../Common/ProtectComponent";
 import ErrorComponent from "../../../heplers/ErrorComponent";
 import Loader from "../../../heplers/Loaders/Loader";
 import { useSelector } from "react-redux";
+import TransactionHistory from "./TransactionHistory";
 const fieldsToReset = [
   { value: "AirWayBillNo", label: "AirWay Bill No" },
   { value: "Consignee", label: "Consignee" },
@@ -25,6 +26,9 @@ const fieldsToReset = [
   { value: "ShipperPhone", label: "Shipper Phone" },
   { value: "ShipperReference", label: "Shipper Reference" },
 ];
+
+
+
 // import ReactPaginate from "react-paginate";
 const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
   const { data, error, isLoading, refetch } = useGetUserServiceTypesDataQuery();
@@ -120,7 +124,19 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
       });
     }
   }
+  const [showTransactionHistory, setShowTransactionHistory] = useState(false);
+  const [selectedAwbNo, setSelectedAwbNo] = useState(null);
 
+  const handlemodal = (awbNo) => {
+    // Set the clicked Airway Bill Number and show the TransactionHistory component
+    setSelectedAwbNo(awbNo);
+    setShowTransactionHistory(true);
+  };
+
+  const closeTransactionHistory = () => {
+    setShowTransactionHistory(false);
+    setSelectedAwbNo(null);
+  };
   useEffect(() => {
     PdfForm.Data && handlePdfDownload(PdfForm.Data, PdfForm.formData.AirwayBillNumber)
   }, [PdfForm.Data])
@@ -298,79 +314,84 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
           </select>
         )}
 
+        {showTransactionHistory ? (
+          <TransactionHistory awbNo={selectedAwbNo} onClose={closeTransactionHistory} />
+        ) : (
+          <div>
+            <table ref={tableRef} className="table table-bordered table-data">
+              <thead className="table-head">
+                <tr className="table-head">
+                  <th scope="col">Sr.No</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Airway Bill No</th>
+                  <th scope="col">Ref</th>
+                  <th scope="col">Shipper</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Consignee</th>
+                  <th scope="col"> City</th>
+                  {/* <th scope="col">Consignee Country</th> */}
+                  <th scope="col">Pieces</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">COD Amt</th>
+                  <th scope="col">Service Type</th>
+                  <th scope="col">Status</th>
+                  {!userAuthData && userAuthData.isLoading && userAuthData && userAuthData.data &&
+                    userAuthData && userAuthData.data.data.AccountData.PayTypeDescription === "Prepaid" &&
+                    (<th scope="col">Rate</th>)}
 
-        <table ref={tableRef} className="table table-bordered table-data">
-          <thead className="table-head">
-            <tr className="table-head">
-              <th scope="col">Sr.No</th>
-              <th scope="col">Date</th>
-              <th scope="col">Airway Bill No</th>
-              <th scope="col">Ref</th>
-              <th scope="col">Shipper</th>
-              <th scope="col">Country</th>
-              <th scope="col">Consignee</th>
-              <th scope="col"> City</th>
-              {/* <th scope="col">Consignee Country</th> */}
-              <th scope="col">Pieces</th>
-              <th scope="col">Weight</th>
-              <th scope="col">COD Amt</th>
-              <th scope="col">Service Type</th>
-              <th scope="col">Status</th>
-              {!userAuthData && userAuthData.isLoading && userAuthData && userAuthData.data &&
-                userAuthData && userAuthData.data.data.AccountData.PayTypeDescription === "Prepaid" &&
-                (<th scope="col">Rate</th>)}
-
-              <th scope="col">Download</th>
-            </tr>
-          </thead>
-          <tbody>
-            {errors.loading ? (
-              <tr>
-                <td colSpan="3"><SmalLoader /></td>
-              </tr>
-            ) : errors.error ? (
-              <></>
-            ) : (
-              currentData &&
-                currentData.length > 0 ?
-                currentData.map((item, index) => (
-                  <tr key={item.Awbno}>
-                    <td>{startIndex + index + 1}</td>
-                    <td>{item.Dated}</td>
-                    <td style={{ width: item.Awbno.length }}>{item.Awbno}</td>
-                    <td>{item.ShipperReference}</td>
-                    <td>{item.Shipper}</td>
-                    <td>{item.OriginName}</td>
-                    <td>{item.Consignee}</td>
-                    <td>{item.DestinationName}</td>
-                    {/* <td>{item.DestinationName}</td> */}
-                    <td>{item.PCS}</td>
-                    <td>{item.Weight}</td>
-                    <td>{item.CODAmount}</td>
-                    <td style={{ width: item.ServiceType.length }}>{item.ServiceType}</td>
-                    <td>{item.Status}</td>
-                    {!userAuthData && userAuthData.isLoading && userAuthData && userAuthData.data &&
-                      userAuthData && userAuthData.data.data.AccountData.PayTypeDescription === "Prepaid" &&
-                      (<td>{item.Rate}</td>)}
-
-                    <td>
-
-                      <button className="download-button " onClick={() => {
-                        PdfForm.setFormData(prev => ({ ...prev, AirwayBillNumber: item.Awbno, }))
-
-                      }} style={{ border: "none" }}>
-                        {" "}
-                        <i class="fa fa-download" aria-hidden="true"></i>
-                      </button>
-
-                    </td>
-                  </tr>
-                )) : <tr>
-                  <td colSpan="3">{"No Records Found"}</td>
+                  <th scope="col">Download</th>
                 </tr>
-            )}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {errors.loading ? (
+                  <tr>
+                    <td colSpan="3"><SmalLoader /></td>
+                  </tr>
+                ) : errors.error ? (
+                  <></>
+                ) : (
+                  currentData &&
+                    currentData.length > 0 ?
+                    currentData.map((item, index) => (
+                      <tr key={item.Awbno}>
+                        <td>{startIndex + index + 1}</td>
+                        <td>{item.Dated}</td>
+                        <td style={{ width: item.Awbno.length, cursor: "pointer" }} onClick={() => handlemodal(item.Awbno)} >{item.Awbno}</td>
+                        <td>{item.ShipperReference}</td>
+                        <td>{item.Shipper}</td>
+                        <td>{item.OriginName}</td>
+                        <td>{item.Consignee}</td>
+                        <td>{item.DestinationName}</td>
+                        {/* <td>{item.DestinationName}</td> */}
+                        <td>{item.PCS}</td>
+                        <td>{item.Weight}</td>
+                        <td>{item.CODAmount}</td>
+                        <td style={{ width: item.ServiceType.length }}>{item.ServiceType}</td>
+                        <td>{item.Status}</td>
+                        {!userAuthData && userAuthData.isLoading && userAuthData && userAuthData.data &&
+                          userAuthData && userAuthData.data.data.AccountData.PayTypeDescription === "Prepaid" &&
+                          (<td>{item.Rate}</td>)}
+
+                        <td>
+
+                          <button className="download-button " onClick={() => {
+                            PdfForm.setFormData(prev => ({ ...prev, AirwayBillNumber: item.Awbno, }))
+
+                          }} style={{ border: "none" }}>
+                            {" "}
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                          </button>
+
+                        </td>
+                      </tr>
+                    )) : <tr>
+                      <td colSpan="3">{"No Records Found"}</td>
+                    </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </>)}
 
       <>

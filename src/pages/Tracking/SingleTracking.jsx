@@ -26,11 +26,10 @@ const SingleTracking = () => {
                 "TrackingAWB":
                     [
                         {
-                            "AirWayBillNo": TrackingData.airWayBillNo
+                                "AirWayBillNo": TrackingData.airWayBillNo
                         }
                     ],
             }
-
             dispatch(setTrackingDetails({ error: false, loading: true }));
 
             try {
