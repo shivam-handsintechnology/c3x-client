@@ -1,18 +1,22 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+
 
 const History = () => {
+    const { data } = useSelector((state) => state.TrackingDetailsReducer)
+    let [{ AirWayBillNo = "", Destination = "", ForwardingNumber = "", Origin = "", ShipmentProgress = 0, ShipperReference = "", TrackingLogDetails = [] }] = data
 
-    const Timeline = ({ events }) => {
-        return (
+    return (
+        <div className='blocks-tab overflow-y-auto'>
             <div className="h-full overflow-hidden">
                 <div className="p-4">
                     <div className="overflow-y-auto h-[calc(100%-3rem)] px-4 pb-4">
                         <div className="space-y-4">
-                            {events.map((event, index) => (
+                            {[...TrackingLogDetails]?.reverse()?.map((event, index) => (
                                 <div key={index} className="d-flex ">
                                     <div className="block-one mb-2 ">
-                                        <p className="mt-1 mb-0 text-end">{event.date}</p>
-                                        <p className="text-gray-600 text-end mb-1">{event.time}</p>
+                                        <p className="mt-1 mb-0 text-end">{event.ActivityDate}</p>
+                                        <p className="text-gray-600 text-end mb-1">{event.ActivityTime}</p>
                                     </div>
                                     <div className=" flex align-items-center mr-4">
                                         <div className="timeline-dot "></div>
@@ -20,7 +24,7 @@ const History = () => {
 
                                     </div>
                                     <div className="block-two mb-2">
-                                        <p className="mt-1 mb-0">{event.description}</p>
+                                        <p className="mt-1 mb-0">{event.Remarks}</p>
                                     </div>
 
                                 </div>
@@ -29,135 +33,6 @@ const History = () => {
                     </div>
                 </div>
             </div>
-        );
-    };
-    const timelineEvents = [
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-
-            description: "This is the description for event 1."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 3."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-
-            description: "This is the description for event 1."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 3."
-        }, {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-
-            description: "This is the description for event 1."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 3."
-        }, {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-
-            description: "This is the description for event 1."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 3."
-        }, {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-
-            description: "This is the description for event 1."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 3."
-        }, {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-
-            description: "This is the description for event 1."
-        },
-        {
-            time: "08:45 am",
-            date: "11th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 2."
-        },
-        {
-            time: "08:45 am",
-            date: "12th Sep 2024",
-            description: "This is the description for event 3."
-        }
-    ];
-    return (
-        <div className='blocks-tab overflow-y-auto'>
-            <Timeline events={timelineEvents} />
         </div>
     )
 }
