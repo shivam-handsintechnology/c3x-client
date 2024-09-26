@@ -4926,3 +4926,72 @@ button.sddsds.bg-blue.text-white {
     padding: 10px 30px;
     border-radius: 10px;
 }
+
+@media (min-width: 992px) {
+
+    .transaction .modal-lg,
+    .transaction .modal-xl {
+        --bs-modal-width: 1100px !important;
+    }
+}
+
+.tracking-icons {
+    border: 1px solid #d3d3d3;
+    border-radius: 50%;
+    align-content: center;
+    padding: 8px;
+    height: 30px;
+    width: 30px;
+    background: #d3d3d3;
+    display: grid;
+}
+
+.transaction .active h6 {
+    color: red !important;
+}
+
+.box-transact {
+    box-shadow: 0 0 2px 0 grey;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.locate-label {
+    font-size: 13px;
+}
+
+.image-circle {
+    border: 1px solid grey;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+}
+
+.image-circle img {
+    height: 100%;
+}
+
+.blocks-tab {
+    background: white;
+    height: 410px;
+}
+
+.timeline-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: black;
+}
+
+.timeline-line {
+    width: 3px;
+    height: 100%;
+    margin-left: 3px;
+    background: blue;
+}
+.block-one{
+    margin-right: 25px;
+}
+.block-two{
+    margin-left: 25px;
+}
