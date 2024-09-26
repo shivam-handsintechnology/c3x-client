@@ -200,9 +200,7 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
           />
         </div>
         <div className="col-lg-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            {fieldsToReset.find((item) => item.value === fieldname).label}
-          </label>
+
           <select value={fieldname} name={fieldname} onChange={(e) => {
             setfieldname(e.target.value)
             setFormData(prev => ({ ...prev, [fieldname]: "" }));
