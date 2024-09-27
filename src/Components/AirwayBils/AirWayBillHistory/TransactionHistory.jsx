@@ -3,12 +3,9 @@ import { Modal, Button, Row, Col, Tabs, Tab } from "react-bootstrap";
 import Brief from "../AirWayBillHistory/Brief"
 import History from "../AirWayBillHistory/History"
 import { useSelector } from "react-redux";
+import.meta.env.VITE_IMAGE_STORAGE_API
 const TransactionHistory = ({ AwbDetails, onClose }) => {
     const { data } = useSelector((state) => state.TrackingDetailsReducer)
-    let [{ AirWayBillNo = "", Destination = "", ForwardingNumber = "", Origin = "", ShipmentProgress = 0, ShipperReference = "", TrackingLogDetails = [] }] = data
-    console.log(AwbDetails)
-    const last = TrackingLogDetails[TrackingLogDetails.length - 1];
-
     const [key, setKey] = useState("home");
     const [activeTab, setActiveTab] = useState("tab1");
     const handleTabClick = (tab) => {
@@ -71,12 +68,14 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         onClick={() => handleTabClick("tab3")}
                     >
                         <h6 className="text-dark mx-4"> POD</h6>
+                        {process.env.REACT_IMAGE_STORAGE_API}
                     </div>
                     <div
                         className={activeTab === "tab4" ? "active" : ""}
                         onClick={() => handleTabClick("tab4")}
                     >
                         <h6 className="text-dark mx-4"> POR</h6>
+                        {process.env.REACT_IMAGE_STORAGE_API}
                     </div>
                 </div>
 
@@ -94,7 +93,10 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         )}
                         {activeTab === "tab2" && (
                             <div>
-                                <History AwbDetails={AwbDetails} />
+                                {
+                                    data.length > 0 && <History AwbDetails={AwbDetails} />
+                                }
+
                             </div>
                         )}
                         {activeTab === "tab3" && (
