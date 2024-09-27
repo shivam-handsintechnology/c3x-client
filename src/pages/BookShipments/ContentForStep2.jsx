@@ -208,7 +208,6 @@ export default function ContentForStep2({
               style={{
                 border: "none",
                 width: "17  0px",
-                border: "none",
                 width: "175px",
                 borderBottom: "1px solid grey",
               }}
