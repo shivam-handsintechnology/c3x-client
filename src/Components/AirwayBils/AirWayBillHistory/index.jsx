@@ -243,7 +243,7 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
             </select>
           )}
 
-          {showTransactionHistory ? (
+          {showTransactionHistory && selectedAwbNoDetails && Object.keys(selectedAwbNoDetails).length > 0 ? (
             <TransactionHistory AwbDetails={selectedAwbNoDetails} onClose={closeTransactionHistory} />
           ) : (
             <div>
