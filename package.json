@@ -19,6 +19,7 @@
     "browser-router": "^0.2.0",
     "chart.js": "^4.4.1",
     "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
     "fslightbox-react": "^1.7.6",
     "joi": "^17.11.0",
     "libphonenumber-js": "^1.10.52",
