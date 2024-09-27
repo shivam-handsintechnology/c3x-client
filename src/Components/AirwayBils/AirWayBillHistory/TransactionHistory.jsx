@@ -3,9 +3,12 @@ import { Modal, Button, Row, Col, Tabs, Tab } from "react-bootstrap";
 import Brief from "../AirWayBillHistory/Brief"
 import History from "../AirWayBillHistory/History"
 import { useSelector } from "react-redux";
+import moment from "moment";
+import POD from "./POD";
 import.meta.env.VITE_IMAGE_STORAGE_API
 const TransactionHistory = ({ AwbDetails, onClose }) => {
-    const { data } = useSelector((state) => state.TrackingDetailsReducer)
+
+    const { data, loading, error } = useSelector((state) => state.TrackingDetailsReducer)
     const [key, setKey] = useState("home");
     const [activeTab, setActiveTab] = useState("tab1");
     const handleTabClick = (tab) => {
@@ -68,14 +71,13 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         onClick={() => handleTabClick("tab3")}
                     >
                         <h6 className="text-dark mx-4"> POD</h6>
-                        {process.env.REACT_IMAGE_STORAGE_API}
                     </div>
                     <div
                         className={activeTab === "tab4" ? "active" : ""}
                         onClick={() => handleTabClick("tab4")}
                     >
                         <h6 className="text-dark mx-4"> POR</h6>
-                        {process.env.REACT_IMAGE_STORAGE_API}
+
                     </div>
                 </div>
 
@@ -101,13 +103,14 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         )}
                         {activeTab === "tab3" && (
                             <div className="blocks-tab">
-                                <p>Proof of Delivery</p>
+                                <p>Proof of Delivery.</p>
+                                <POD AwbDetails={AwbDetails} />
                             </div>
                         )}
                         {activeTab === "tab4" && (
                             <div className="blocks-tab">
-
                                 <p>Proof of Return.</p>
+                                <POD AwbDetails={AwbDetails} />
                             </div>
                         )}
                     </div>
@@ -120,6 +123,8 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
 
         </Modal>
     );
+
+
 };
 
 export default TransactionHistory;
