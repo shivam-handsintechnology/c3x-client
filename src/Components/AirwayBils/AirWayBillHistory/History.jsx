@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-
+import { Row, Col } from "react-bootstrap";
 
 const History = () => {
     const { data } = useSelector((state) => state.TrackingDetailsReducer)
