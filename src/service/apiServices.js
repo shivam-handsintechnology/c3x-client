@@ -1,7 +1,7 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-export const APi_Url = "http://localhost:8997/api/";
-// export const APi_Url = "https://api.c3x.ae/api/";
+// export const APi_Url = "http://localhost:8997/api/";
+export const APi_Url = "https://api.c3x.ae/api/";
 const getAuthToken = () => {
   return localStorage.getItem("token");
 };
