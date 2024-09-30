@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Row, Col } from "react-bootstrap";
 
-const History = () => {
+const History = ({ AwbDetails }) => {
     const { data } = useSelector((state) => state.TrackingDetailsReducer)
     let [{ AirWayBillNo = "", Destination = "", ForwardingNumber = "", Origin = "", ShipmentProgress = 0, ShipperReference = "", TrackingLogDetails = [] }] = data
 
@@ -24,7 +24,9 @@ const History = () => {
 
                                     </div>
                                     <div className="block-two mb-2">
-                                        <p className="mt-1 mb-0">{event.Remarks}</p>
+                                        <p className="mt-1 mb-0">{
+                                            event.Status === "POD" ? AwbDetails.Remarks :
+                                                event.Remarks}</p>
                                     </div>
 
                                 </div>

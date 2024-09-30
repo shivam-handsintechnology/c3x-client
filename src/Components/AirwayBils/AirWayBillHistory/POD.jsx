@@ -30,14 +30,15 @@ const POD = ({ AwbDetails, }) => {
                             className={`btn btn-default filter-button ${activeFilter === filter ? 'active' : ''}`}
                             onClick={() => handleFilterChange(filter)}
                         >
+                            {filter === "front" || filter === "back" ? "ID " : ""}
                             {filter.charAt(0).toUpperCase() + filter.slice(1)}
                         </button>
                     ))}
                 </div>
                 <div className="row">
                     {filteredImages.map((image) => (
-                        <div key={image.id} className={`gallery_product col-md-4 filter ${image.category}`}>
-                            <img src={image.src} alt={image.category} width={"100%"} />
+                        <div key={image.id} className={`gallery_product col-md-4 filter `}>
+                            <img src={image.src} alt={image.category} />
                         </div>
                     ))}
                 </div>

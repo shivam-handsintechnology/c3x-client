@@ -18,9 +18,10 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
         <Modal className="transaction" show={true} onHide={onClose} centered size="lg">
             <Modal.Header className="d-block">
 
+                <br />
                 <Row style={{ width: "100%" }}>
                     <Col lg={3} md={6}>
-                        <h6 className="text-dark">tracking:{AwbDetails?.Awbno}</h6>
+                        <h6 className="text-dark">Tracking: {AwbDetails?.Awbno}</h6>
                         <h6 className="text-dark">Shipper Ref : {AwbDetails?.ShipperReference}</h6>
 
                     </Col>
@@ -30,8 +31,8 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                                 <i className="fa fa-plus"></i>
                             </div>
                             <span className="mx-2">
-                                <h6 className="text-dark"> In scan</h6>
-                                <h6 className="text-dark">{AwbDetails?.StatusDate}</h6>
+                                <h6 className="text-dark">Status</h6>
+                                <h6 className="text-dark">{AwbDetails?.Status}</h6>
                             </span>
                         </div>
 
@@ -57,7 +58,7 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         className={activeTab === "tab1" ? "active" : ""}
                         onClick={() => handleTabClick("tab1")}
                     >
-                        <h6 className="text-dark "> Brief</h6>
+                        <h6 className="text-dark "> Summary</h6>
                     </div>
                     <div
                         className={activeTab === "tab2" ? "active" : ""}
@@ -72,13 +73,10 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                     >
                         <h6 className="text-dark mx-4"> POD</h6>
                     </div>
-                    <div
-                        className={activeTab === "tab4" ? "active" : ""}
-                        onClick={() => handleTabClick("tab4")}
-                    >
-                        <h6 className="text-dark mx-4"> POR</h6>
-
+                    <div>
+                        <h6 className="text-dark mx-4">Transaction History for AWB No: {AwbDetails?.Awbno}</h6>
                     </div>
+
                 </div>
 
             </Modal.Header>
@@ -95,29 +93,18 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         )}
                         {activeTab === "tab2" && (
                             <div>
-                                {
-                                    data.length > 0 && <History AwbDetails={AwbDetails} />
-                                }
-
+                                {data.length > 0 && <History AwbDetails={AwbDetails} />}
                             </div>
                         )}
                         {activeTab === "tab3" && (
                             <div className="blocks-tab">
-                                <p>Proof of Delivery.</p>
+                                <p className="text-dark">Proof of Delivery.</p>
                                 <POD AwbDetails={AwbDetails} />
                             </div>
                         )}
-                        {activeTab === "tab4" && (
-                            <div className="blocks-tab">
-                                <p>Proof of Return.</p>
-                                <POD AwbDetails={AwbDetails} />
-                            </div>
-                        )}
+
                     </div>
-
-
                 </div>
-                <h5>Transaction History for AWB No: {AwbDetails?.awbNo}</h5>
 
             </Modal.Body>
 
