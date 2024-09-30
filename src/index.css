@@ -93,3 +93,14 @@ a {
 }
 
 /*end  gallery tab css */
+
+.source-module h2 {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 1rem;
+}
+
+.source-module {
+    position: relative;
+}

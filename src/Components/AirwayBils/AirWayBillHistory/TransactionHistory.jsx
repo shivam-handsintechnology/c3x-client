@@ -21,7 +21,7 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                 <br />
                 <Row style={{ width: "100%" }}>
                     <Col lg={3} md={6}>
-                        <h6 className="text-dark">tracking: {AwbDetails?.Awbno}</h6>
+                        <h6 className="text-dark">Tracking: {AwbDetails?.Awbno}</h6>
                         <h6 className="text-dark">Shipper Ref : {AwbDetails?.ShipperReference}</h6>
 
                     </Col>
