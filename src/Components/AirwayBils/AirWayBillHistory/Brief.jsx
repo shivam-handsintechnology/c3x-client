@@ -20,7 +20,7 @@ const Brief = ({ AwbDetails }) => {
                                     <h6 className='text-dark'>Sender</h6>
                                     <h2>{AwbDetails.Origin}</h2>
                                     <h6 className='text-dark'>{AwbDetails?.Shipper}</h6>
-                                    <label>05000000000</label>
+                                    <label>{AwbDetails?.ShipperTel}</label>
                                     <br />
                                     <div className='d-inline-flex mt-3'>
                                         <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
@@ -42,7 +42,7 @@ const Brief = ({ AwbDetails }) => {
                                     <h6 className='text-dark'>Recipient</h6>
                                     <h2>{AwbDetails.Destination}</h2>
                                     <h6 className='text-dark'>{AwbDetails?.Consignee}</h6>
-                                    <label>05000000000</label>
+                                    <label>{AwbDetails?.ConsigneeTel}</label>
                                     <br />
                                     <div className='d-inline-flex mt-3'>
                                         <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
@@ -85,13 +85,11 @@ const Brief = ({ AwbDetails }) => {
                                         <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Item Value </label>
-                                            <label className='locate-label mx-1'> {AwbDetails?.Content} </label>
+                                            <label className='locate-label mx-1'> {AwbDetails?.InvoiceValue} </label>
                                         </div>
                                     </div>
                                 </Col>
                                 <Col lg={8}>
-
-
                                     <div className='d-grid  mt-3'>
                                         <label className='locate-label mx-1'> Item Description / Special Instructions : </label>
                                         <label className='locate-label mx-1'> {AwbDetails?.Content} </label>
@@ -120,7 +118,7 @@ const Brief = ({ AwbDetails }) => {
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'>Payment Method
                                             </label>
-                                            <label className='locate-label mx-1'> N/A </label>
+                                            <label className='locate-label mx-1'> {AwbDetails?.PaymentMethod} </label>
                                         </div>
                                     </div>
 
@@ -155,6 +153,17 @@ const Brief = ({ AwbDetails }) => {
                                 <Col lg={3}>
                                     <div className='d-grid mt-3'>
                                         <label className='locate-label mx-1'>{AwbDetails?.CODAmount} </label>
+                                    </div>
+                                </Col>
+                                <Col lg={6}>
+                                    <div className='d-grid mt-3'>
+                                        <label className='locate-label mx-1'> COD Payment Status </label>
+
+                                    </div>
+                                </Col>
+                                <Col lg={3}>
+                                    <div className='d-grid mt-3'>
+                                        <label className='locate-label mx-1'>{AwbDetails?.CodStatus} </label>
                                     </div>
                                 </Col>
 

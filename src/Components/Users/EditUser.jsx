@@ -201,36 +201,22 @@ const EditUser = (props) => {
           type="text"
         />
       </div>
-      {/* <div className="col-lg-6 mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">
-                  Password
-                </label>
-                <input
-                  name="password"
-                  value={formData["password"]}
-                  className="form-control"
-                  onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  autoComplete="off"
-                  defaultValue=""
-                  required=""
-                  type="text"
-                />
-              </div>
-              <div className="col-lg-6 mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">
-                  Confirm Password
-                </label>
-                <input
-                  name="cpassword"
-                  value={formData["cpassword"]}
-                  className="form-control"
-                  onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  autoComplete="off"
-                  defaultValue=""
-                  required=""
-                  type="text"
-                />
-              </div> */}
+      <div className="col-lg-6 mb-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Password
+        </label>
+        <input
+          name="password"
+          value={formData["password"]}
+          className="form-control"
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          autoComplete="off"
+          defaultValue=""
+          required=""
+          type="text"
+        />
+      </div>
+
 
     </>
 
