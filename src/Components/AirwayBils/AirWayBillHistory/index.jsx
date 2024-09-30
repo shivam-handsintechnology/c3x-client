@@ -284,7 +284,7 @@ const AirWayBillHistory = ({ userAuthData, handlePdfDownload }) => {
                         <td>{(pageNumber - 1) * itemsPerPage + index + 1}</td>
                         <td>{item.Dated}</td>
                         <td>
-                          <a className="page-title" style={{ cursor: "pointer", textDecoration: "underline" }} onClick={() => handleModal(item)} >{item.Awbno}</a>
+                          <a className="airwabillnishipmnthistoiry" onClick={() => handleModal(item)} >{item.Awbno}</a>
                         </td>
                         <td>{item.ShipperReference}</td>
                         <td>{item.Shipper}</td>
