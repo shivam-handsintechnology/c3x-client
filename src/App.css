@@ -4946,8 +4946,21 @@ button.sddsds.bg-blue.text-white {
     display: grid;
 }
 
+h6.headtab {
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 40px;
+    align-content: center;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
 .transaction .active h6 {
-    color: red !important;
+    border: 1px solid black;
+    border-bottom: none;
+    height: 40px;
+    color: #2CA2C6 !important;
+    align-content: center;
 }
 
 .box-transact {
@@ -4980,19 +4993,37 @@ button.sddsds.bg-blue.text-white {
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background: black;
+    background: rgb(94 94 94);
 }
 
 .timeline-line {
     width: 3px;
     height: 100%;
     margin-left: 3px;
-    background: blue;
+    background: #2CA2C6;
 }
-.block-one{
+
+.block-one {
     margin-right: 25px;
     width: 260px;
 }
-.block-two{
+
+.block-two {
     margin-left: 25px;
+}
+
+a.airwabillnishipmnthistoiry {
+    font-family: sans-serif;
+    color: #2CA2C6;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.pod-tab {
+    margin-bottom: 20px;
+    border-bottom: 1px solid grey;
 }

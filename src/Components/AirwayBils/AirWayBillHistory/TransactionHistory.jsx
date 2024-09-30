@@ -16,7 +16,7 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
     };
     return (
         <Modal className="transaction" show={true} onHide={onClose} centered size="lg">
-            <Modal.Header className="d-block">
+            <Modal.Header className="d-block pb-0">
 
                 <br />
                 <Row style={{ width: "100%" }}>
@@ -55,26 +55,26 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
 
                 <div className="tab-buttons transaction d-inline-flex">
                     <div
-                        className={activeTab === "tab1" ? "active" : ""}
+                        className={ activeTab === "tab1" ? "active" : ""}
                         onClick={() => handleTabClick("tab1")}
                     >
-                        <h6 className="text-dark "> Summary</h6>
+                        <h6 className="text-dark headtab"> Summary</h6>
                     </div>
                     <div
                         className={activeTab === "tab2" ? "active" : ""}
                         onClick={() => handleTabClick("tab2")}
                     >
-                        <h6 className="text-dark mx-4">  History </h6>
+                        <h6 className="text-dark headtab">  History </h6>
 
                     </div>
                     <div
                         className={activeTab === "tab3" ? "active" : ""}
                         onClick={() => handleTabClick("tab3")}
                     >
-                        <h6 className="text-dark mx-4"> POD</h6>
+                        <h6 className="text-dark headtab"> POD</h6>
                     </div>
                     <div>
-                        <h6 className="text-dark mx-4">Transaction History for AWB No: {AwbDetails?.Awbno}</h6>
+                        <h6 className="text-dark headtab">Transaction History for AWB No: {AwbDetails?.Awbno}</h6>
                     </div>
 
                 </div>

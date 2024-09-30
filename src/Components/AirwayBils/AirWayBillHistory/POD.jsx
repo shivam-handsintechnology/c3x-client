@@ -20,20 +20,31 @@ const POD = ({ AwbDetails, }) => {
 
     const filteredImages = images.filter((image) => image.category === activeFilter);
     return (
-        <section id="portfolio">
+
             <div className="container">
 
                 <div>
+                    {/* <div
+                        className={activeTab === "tab2" ? "active" : ""}
+                        onClick={() => handleTabClick("tab2")}
+                    >
+                        <h6 className="text-dark headtab">  History </h6>
+
+                    </div> */}
+                    <div className='tab-buttons transaction d-inline-flex pod-tab'>
                     {filters.map((filter) => (
-                        <button
+
+                        <div
                             key={filter}
-                            className={`btn btn-default filter-button ${activeFilter === filter ? 'active' : ''}`}
+                            className={`headtab  ${activeFilter === filter ? 'active' : ''}`}
                             onClick={() => handleFilterChange(filter)}
                         >
-                            {filter === "front" || filter === "back" ? "ID " : ""}
-                            {filter.charAt(0).toUpperCase() + filter.slice(1)}
-                        </button>
+                            <h6 className="text-dark headtab">  {filter === "front" || filter === "back" ? "ID " : ""}
+                                {filter.charAt(0).toUpperCase() + filter.slice(1)} </h6>
+                           
+                        </div>
                     ))}
+                    </div>
                 </div>
                 <div className="row">
                     {filteredImages.map((image) => (
@@ -43,7 +54,7 @@ const POD = ({ AwbDetails, }) => {
                     ))}
                 </div>
             </div>
-        </section>
+    
     );
 };
 
