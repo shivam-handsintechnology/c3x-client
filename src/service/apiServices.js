@@ -39,6 +39,7 @@ export const RTKQueryApi = createApi({
   endpoints: (builder) => ({
     getUerProfile: builder.query({
       query: () => `auth/profile`,
+      providesTags: ['UserProfile'],
     }),
     trackByReference: builder.mutation({
       query: (data) => ({
@@ -100,6 +101,7 @@ export const RTKQueryApi = createApi({
         method: "POST",
         body: payload,
       }),
+      invalidatesTags: ['UserProfile']
     }),
     MultipleCreateAirwayBill: builder.mutation({
       query: (payload) => ({

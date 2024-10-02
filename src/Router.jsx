@@ -78,8 +78,6 @@ const Router = () => {
     if (isLoader) {
         return <Loader />;
     }
-
-
     return (
 
         <BrowserRouter>
