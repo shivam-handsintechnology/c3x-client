@@ -12,7 +12,7 @@ const History = ({ AwbDetails }) => {
                 <div className="p-4">
                     <div className="overflow-y-auto h-[calc(100%-3rem)] px-4 pb-4">
                         <div className="space-y-4">
-                            {[...TrackingLogDetails]?.reverse()?.map((event, index) => (
+                            {[...TrackingLogDetails]?.map((event, index) => (
                                 <div key={index} className="d-flex ">
                                     <div className="block-one mb-2 ">
                                         <p className="mt-1 mb-0 text-end">{event.ActivityDate}</p>

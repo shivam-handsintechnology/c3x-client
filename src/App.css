@@ -4936,14 +4936,17 @@ button.sddsds.bg-blue.text-white {
 }
 
 .tracking-icons {
-    border: 1px solid #d3d3d3;
+
     border-radius: 50%;
-    align-content: center;
-    padding: 8px;
-    height: 30px;
-    width: 30px;
-    background: #d3d3d3;
-    display: grid;
+    width: 35px;
+    background: grey;
+    height: 31px;
+
+    padding: 5px;
+}
+
+.tracking-icons img {
+    height: 100%;
 }
 
 h6.headtab {
