@@ -13,7 +13,7 @@ import ProtectComponent from './ProtectComponent';
 
 const DashboardLayout = (props) => {
     const { data, isLoading, error } = props.userAuthData
-    
+
     console.log("data>>>", data?.data?.AccountData?.PaymentType)
     const isNavDrawerOpen = useSelector(state => state.NavDropdownReducer.isNavDrawerOpen)
     const dispatch = useDispatch()
@@ -74,7 +74,7 @@ const DashboardLayout = (props) => {
                                 </li>
                                 {data && data.data.user.Role === "Admin" && (
                                     <li className="nav-list-item">
-                                        <Link to="/ServiceTypes" className='nav-list-item-link'>
+                                        <Link to="/ManageServiceTypes" className='nav-list-item-link'>
                                             <i className="fa fa-shopping-cart fa-fw" />
                                             <span className="nav-list-item-title">Manage Service Types</span>
                                         </Link>
@@ -116,7 +116,7 @@ const DashboardLayout = (props) => {
                                         </Link>
                                     </li>
                                 </ProtectComponent>
-                                 {/* {!isLoading && data && data?.data?.AccountData?.PaymentType=="PP" && (
+                                {/* {!isLoading && data && data?.data?.AccountData?.PaymentType=="PP" && (
                                     <li className="nav-list-item">
                                         <Link to="/Topuprequest" className="nav-list-item-link">
                                             <i className="fa fa-child fa-fw" />
@@ -124,7 +124,7 @@ const DashboardLayout = (props) => {
                                         </Link>
                                     </li>
                                 )}  */}
-                               {!isLoading && data && data?.data?.AccountData?.PaymentType=="PP" && (
+                                {!isLoading && data && data?.data?.AccountData?.PaymentType == "PP" && (
                                     <li className="nav-list-item">
                                         <Link to="/PrepaidTopuprequest" className="nav-list-item-link">
                                             <i className="fa fa-child fa-fw" />
@@ -132,7 +132,7 @@ const DashboardLayout = (props) => {
                                         </Link>
                                     </li>
                                 )}
-                                {!isLoading && data && data?.data?.AccountData?.PaymentType=="PP" && (
+                                {!isLoading && data && data?.data?.AccountData?.PaymentType == "PP" && (
                                     <li className="nav-list-item">
                                         <Link to="/Topuphistory" className="nav-list-item-link">
                                             <i className="fa fa-child fa-fw" />
@@ -152,7 +152,7 @@ const DashboardLayout = (props) => {
                                         <span className="nav-list-item-title">Payments Dues</span>
                                     </Link>
                                 </li>
-                                {!isLoading && data && data?.data?.AccountData?.PaymentType=="PP" && (
+                                {!isLoading && data && data?.data?.AccountData?.PaymentType == "PP" && (
                                     <li className="nav-list-item">
                                         <Link to={"/PrepaidAccountStatus"} className="nav-list-item-link">
                                             <i className="fa fa-child fa-fw" />

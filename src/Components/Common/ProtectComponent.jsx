@@ -1,13 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setNavDropDownDetails } from "../../redux/reducers/NavDropdownReducer";
-import footerlogo from "../../../src/assets/settings/footerlogo.png";
 import "../../pages/Admin/Dashboard.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Dropdown } from "react-bootstrap";
-import { useGetUerProfileQuery } from "../../service/apiServices";
-import { useEffect } from "react";
-import { setUserDetails } from "../../redux/reducers/UserReducer";
+
 import Loader from "../../heplers/Loaders/Loader";
 
 const ProtectComponent = (props) => {
@@ -19,8 +12,7 @@ const ProtectComponent = (props) => {
   }
   else if (props.userAuthData.data) {
     const userAuthData = props.userAuthData.data.data.user;
-    const isAdmin = props.userAuthData.data.data.user.Role==="Admin";
-    //console.log("isadmin", isAdmin)
+    const isAdmin = props.userAuthData.data.data.user.Role === "Admin";
     const dashboradprperty = props.dashboard;
     const isAuth = userAuthData.dashboard[dashboradprperty];
     //console.log("isAuth",userAuthData.dashboard)
