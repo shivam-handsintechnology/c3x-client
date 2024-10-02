@@ -23,7 +23,7 @@ const Brief = ({ AwbDetails }) => {
                                     <label>05000000000</label>
                                     <br />
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png" /></div>
                                         <label className='locate-label mx-1'> {AwbDetails?.OriginName} </label>
                                     </div>
                                 </Col>
@@ -45,7 +45,7 @@ const Brief = ({ AwbDetails }) => {
                                     <label>05000000000</label>
                                     <br />
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png" /></div>
                                         <label className='locate-label mx-1'> {AwbDetails?.DestinationName} </label>
                                     </div>
                                 </Col>
@@ -58,7 +58,7 @@ const Brief = ({ AwbDetails }) => {
                             <Row>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png"/></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Weight  </label>
                                             <label className='locate-label mx-1'> {AwbDetails?.Weight} kg </label>
@@ -68,7 +68,7 @@ const Brief = ({ AwbDetails }) => {
                                 </Col>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Service Type
 
@@ -82,7 +82,7 @@ const Brief = ({ AwbDetails }) => {
 
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Item Value </label>
                                             <label className='locate-label mx-1'> {AwbDetails?.Content} </label>
@@ -116,7 +116,7 @@ const Brief = ({ AwbDetails }) => {
                             <Row>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'>Payment Method
                                             </label>
@@ -127,7 +127,7 @@ const Brief = ({ AwbDetails }) => {
                                 </Col>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <span className='tracking-icons'>  <i className='fa fa-home'></i></span>
+                                        <div className='tracking-icons'><img src="/src/assets/settings/footerlogo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Service Charge Paid By </label>
                                             <label className='locate-label mx-1'>Shipper </label>
