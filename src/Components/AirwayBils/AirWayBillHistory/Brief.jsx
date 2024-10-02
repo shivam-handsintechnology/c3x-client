@@ -90,21 +90,22 @@ const Brief = ({ AwbDetails }) => {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={6} >
+
                                     <div className='d-grid  mt-3'>
+                                        <label className='locate-label mx-1'> Packages </label>
+                                        <label className='locate-label mx-1'> {AwbDetails?.PCS} </label>
+                                    </div>
+
+                                </Col>
+                                <Col lg={12}>
+                                    <div className='d-grid   mt-3'>
                                         <label className='locate-label mx-1'> Item Description / Special Instructions : </label>
                                         <label className='locate-label mx-1'> {AwbDetails?.Content} </label>
                                     </div>
 
                                 </Col>
-                                <Col >
 
-                                    <div className='d-grid  mt-3'>
-                                        <label className='locate-label mx-1'> No Of Pieces </label>
-                                        <label className='locate-label mx-1'> {AwbDetails?.PCS} </label>
-                                    </div>
-
-                                </Col>
                             </Row>
                         </div>
                     </Col>
