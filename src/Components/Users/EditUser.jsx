@@ -51,7 +51,7 @@ const EditUser = (props) => {
         </label>
         <input
           name="company_name"
-          value={formData["address"]["company_name"]}
+          value={formData?.["address"]?.["company_name"]}
           className="form-control"
           onChange={(e) => handleChnageAddress(e.target.name, e.target.value)}
           autoComplete="off"
@@ -82,7 +82,7 @@ const EditUser = (props) => {
         </label>
         <input
           name="address_line_1"
-          value={formData["address"]["address_line_1"]}
+          value={formData?.["address"]?.["address_line_1"]}
           className="form-control"
           onChange={(e) => handleChnageAddress(e.target.name, e.target.value)}
           autoComplete="off"
@@ -98,7 +98,7 @@ const EditUser = (props) => {
         </label>
         <input
           name="address_line_2"
-          value={formData["address"]["address_line_2"]}
+          value={formData?.["address"]?.["address_line_2"]}
           className="form-control"
           onChange={(e) => handleChnageAddress(e.target.name, e.target.value)}
           autoComplete="off"
@@ -114,7 +114,7 @@ const EditUser = (props) => {
         <select
           name="Country"
           onChange={(e) => handleChnageAddress(e.target.name, e.target.value)}
-          value={formData["address"]["Country"]}
+          value={formData?.["address"]?.["Country"]}
           className="form-control"
         >
           <option value={""}>Select Country</option>
@@ -138,7 +138,7 @@ const EditUser = (props) => {
             handleChnageAddress("Origin", selectedId)
             handleChnageAddress(e.target.name, e.target.value)
           }}
-          value={formData["address"]["City"]}
+          value={formData?.["address"]?.["City"]}
           className="form-control"
         >
           <option value={""}>Select City</option>
@@ -159,11 +159,11 @@ const EditUser = (props) => {
           // className="form-control"
 
           name="phone_number"
-          value={formData["address"]["phone_number"]}
+          value={formData?.["address"]?.["phone_number"]}
           international
           countryCallingCodeEditable={false}
           placeholder="Phone  Number"
-          defaultCountry={formData["address"]["Country"]}
+          defaultCountry={formData?.["address"]?.["Country"]}
           onChange={(v) => {
             handleChnageAddress("phone_number", v);
           }}
@@ -177,10 +177,10 @@ const EditUser = (props) => {
           // className="form-control"
           name="telephone_number"
           countryCallingCodeEditable={false}
-          value={formData["address"]["telephone_number"]}
+          value={formData?.["address"]?.["telephone_number"]}
           international
           placeholder="Phone  Number"
-          defaultCountry={formData["address"]["Country"]}
+          defaultCountry={formData?.["address"]?.["Country"]}
           onChange={(v) => {
             handleChnageAddress("telephone_number", v);
           }}
