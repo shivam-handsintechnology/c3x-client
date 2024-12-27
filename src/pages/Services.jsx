@@ -194,11 +194,11 @@ const Services = () => {
                                         <div className="mask rounded">
                                             <div className="cover rounded">
                                                 <div className="c-inner">
-                                                    <Link to="/services/Ecommerce_fulfilment">
+                                                    <a href="/services/ecommerce-fulfilment-service-in-dubai.html">
                                                         <h3>
                                                             <span>E-Commerce Fulfilment</span>
                                                         </h3>
-                                                    </Link>
+                                                    </a>
                                                     <p />
                                                     <p>
                                                         In today’s ever-evolving and highly competitive business
@@ -206,12 +206,12 @@ const Services = () => {
                                                         are essential for business....
                                                     </p>
                                                     <div className="text-center">
-                                                        <Link
-                                                            to="/services/Ecommerce_fulfilment"
+                                                        <a
+                                                            href="/services/ecommerce-fulfilment-service-in-dubai.html"
                                                             className="btn btn-service"
                                                         >
                                                             <i className="fa fa-arrow-right" />
-                                                        </Link>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

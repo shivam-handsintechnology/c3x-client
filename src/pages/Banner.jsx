@@ -40,7 +40,7 @@ const Banner = (props) => {
               <div className="banner_content">
                 <h3>welcome to</h3>
                 <h2>c3x couriers</h2>
-                <h3>COURIER, CARGO &amp; CUSTOMER EXPERIENCE IS 3X NOW</h3>
+                <h3>COURIER, CARGO &amp; CUSTOMER  Care—Now 3X Better!</h3>
                 <div className="round-cornner_cs3 mt-lg-5">
                   {SingleChange && <SingleTracking />}
                   {MultipleChange && <MultipleTracking />}

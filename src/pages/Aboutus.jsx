@@ -54,30 +54,15 @@ const Aboutus = ({ pageURL }) => {
                                 </div>
                             </div>
                             <div className="p-our_booth_text">
-                                <p>Company Overview </p>
-                                <p></p>
                                 <p>
                                     <span style={{ fontSize: 15 }}>
                                         <span style={{ fontFamily: "myriadpro-regular,poppins" }}>
-                                            C3X makes deliveries happen faster for businesses and consumers.
-                                            We’ve developed a unique same-day and next-day delivery network
-                                            positioned to enhance the speed and flexibility of last-mile
-                                            delivery. We help consumers send international parcels more
-                                            cost-effectively and get products more quickly while lowering
-                                            the cost of distribution for the businesses they buy from. In
-                                            addition to being an ideal delivery partner for e-retailers and
-                                            e-commerce companies, we offer expertise in a wide range of
-                                            solutions across a wide range of industries that support
-                                            time-critical delivery ranging from business to business, banks,
-                                            and financial services, to healthcare logistics. We are part of
-                                            the Bin Yaber Group, a conglomerate of various industries
-                                            ranging from the Hotel industry, driving schools, real estate
-                                            &amp; property management, to car care and express deliveries.
-                                            We share a passion for great service, leveraged by the use of
-                                            our in-house systems to monitor each aspect of your parcel
-                                            journey with our drivers to ensure a reliable and on-time
-                                            delivery seven days a week, enabling our expanding delivery
-                                            couriers to reach more people every day.
+                                            At C3X, we’re on a mission to make deliveries faster, smarter, and more reliable for businesses and consumers. Our innovative same-day and next-day delivery network is designed to bring speed and flexibility to the last mile, ensuring every package gets where it needs to go on time.<br/><br/>
+                                            Whether you’re easily shipping international parcels or receiving products faster than ever, C3X is here to save you time and money. For businesses, we streamline distribution costs while enhancing customer satisfaction, making us the ultimate delivery partner for e-retailers, e-commerce giants, and beyond.<br/><br/>
+                                            But we don’t stop there. Our expertise spans industries that depend on time-critical deliveries, business-to-business services, banking and financial logistics, and even healthcare. No matter the challenge, we deliver solutions that work.
+                                            As part of the renowned Bin Yaber Group, our roots run deep in excellence, spanning industries like hospitality, real estate, car care, and logistics. Every day, our dedicated team and advanced systems work together to track, monitor, and guarantee seamless delivery, 7 days a week.<br/><br/>
+                                            From global parcels to local deliveries, C3X connects people and possibilities, making the world smaller and service bigger. We’re not just delivering parcels, we’re delivering promises.<br/><br/>
+                                            Let’s go further, faster—together with C3X.
                                         </span>
                                     </span>
                                 </p>

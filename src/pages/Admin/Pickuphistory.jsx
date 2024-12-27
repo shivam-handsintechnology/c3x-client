@@ -41,7 +41,7 @@ const Pickuphistory = (props) => {
           (pageNumber - 1) * itemsPerPage + itemsPerPage
         )
       );
-    }else{
+    } else {
       setNumberOfPages(0)
     }
   }, [pageNumber, Data, itemsPerPage]);
@@ -75,13 +75,14 @@ const Pickuphistory = (props) => {
   useEffect(() => {
     refetch()
   }, [formData.AccountNo])
+  console.log("currentData", currentData)
   return (
-    <ProtectComponent isDashboard={true} dashboard={"Manage_Sub_Users"} userAuthData={props.userAuthData}>
+    <ProtectComponent isDashboard={true} dashboard={"Pickup_History"} userAuthData={props.userAuthData}>
 
       <main id="content" role="main">
         <div className="main-content">
           <div className="container-fluid">
-            <h2 className="page-title">Pickup History  | <PrepadAccountStatusLeftMoney/></h2>
+            <h2 className="page-title">Pickup History  | <PrepadAccountStatusLeftMoney /></h2>
             <div className="card customcss mb-5">
               <div className="card-body">
                 <form onSubmit={(e) => {
@@ -248,7 +249,7 @@ const Pickuphistory = (props) => {
                         </tbody>
                       </table>
                     </>)}
-                { pageComponent()}
+                {pageComponent()}
               </div>
             </div>
           </div>

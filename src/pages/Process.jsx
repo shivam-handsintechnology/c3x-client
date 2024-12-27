@@ -16,7 +16,7 @@ const Process = () => {
                             <div className="col-12">
                                 <div className="sec-title text-center">
                                     <h2 className="wow animated bounceInLeft text-center">Process</h2>
-                                    <h1>WORKING PROCESS FOR C3X</h1>
+                                    <h1>C3X’s Hassle-Free Process</h1>
                                 </div>
                             </div>
                             <div className="row">
@@ -25,10 +25,9 @@ const Process = () => {
                                         <div className="service-icon ">
                                             <img src={assest9} />
                                         </div>
-                                        <h3>make online order</h3>
+                                        <h3>Click to Order</h3>
                                         <p>
-                                            From finance, retail, and travel, to social media,
-                                            cybersecurity, adtech, and more.{" "}
+                                            Your delivery journey starts online. Covering industries from finance to social media.
                                         </p>
                                     </div>
                                 </div>
@@ -40,10 +39,9 @@ const Process = () => {
                                         <div className="service-icon">
                                             <img src={assest10} />
                                         </div>
-                                        <h3>bring your product</h3>
+                                        <h3>Bring Your Package</h3>
                                         <p>
-                                            From finance, retail, and travel, to social media,
-                                            cybersecurity, adtech, and more.{" "}
+                                            Drop it off, and we’ll take care of the rest, whether it’s retail, travel, or beyond.
                                         </p>
                                     </div>
                                 </div>
@@ -55,10 +53,9 @@ const Process = () => {
                                         <div className="service-icon">
                                             <img src={assest11} />
                                         </div>
-                                        <h3>get transportaition</h3>
+                                        <h3>Transport Made Easy</h3>
                                         <p>
-                                            From finance, retail, and travel, to social media,
-                                            cybersecurity, adtech, and more.{" "}
+                                            We ensure secure, on-time transportation across industries like cybersecurity and ad tech.
                                         </p>
                                     </div>
                                 </div>

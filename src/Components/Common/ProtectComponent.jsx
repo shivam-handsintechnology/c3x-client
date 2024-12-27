@@ -4,7 +4,7 @@ import "../../pages/Admin/Dashboard.css";
 import Loader from "../../heplers/Loaders/Loader";
 
 const ProtectComponent = (props) => {
-
+  console.log("userAuthData", props.userAuthData)
   if (props.userAuthData.isLoading) {
     return <Loader />
   } else if (props.userAuthData.error) {
