@@ -21,17 +21,17 @@ const POD = ({ AwbDetails, }) => {
     const filteredImages = images.filter((image) => image.category === activeFilter);
     return (
 
-            <div className="container">
+        <div className="container">
 
-                <div>
-                    {/* <div
+            <div>
+                {/* <div
                         className={activeTab === "tab2" ? "active" : ""}
                         onClick={() => handleTabClick("tab2")}
                     >
                         <h6 className="text-dark headtab">  History </h6>
 
                     </div> */}
-                    <div className='tab-buttons transaction d-inline-flex pod-tab'>
+                <div className='tab-buttons transaction d-inline-flex pod-tab'>
                     {filters.map((filter) => (
 
                         <div
@@ -41,20 +41,20 @@ const POD = ({ AwbDetails, }) => {
                         >
                             <h6 className="text-dark headtab">  {filter === "front" || filter === "back" ? "ID " : ""}
                                 {filter.charAt(0).toUpperCase() + filter.slice(1)} </h6>
-                           
-                        </div>
-                    ))}
-                    </div>
-                </div>
-                <div className="row">
-                    {filteredImages.map((image) => (
-                        <div key={image.id} className={`gallery_product col-md-4 filter `}>
-                            <img src={image.src} alt={image.category} />
+
                         </div>
                     ))}
                 </div>
             </div>
-    
+            <div className="row">
+                {filteredImages.map((image) => (
+                    <div key={image.id} className={`gallery_product col-md-4 filter `}>
+                        <img src={image.src} alt={image.category} onError={(e) => e.target.src = "/not-available.svg"} />
+                    </div>
+                ))}
+            </div>
+        </div>
+
     );
 };
 

@@ -5,6 +5,7 @@ import History from "../AirWayBillHistory/History"
 import { useSelector } from "react-redux";
 import moment from "moment";
 import POD from "./POD";
+import POA from "./POA";
 import.meta.env.VITE_IMAGE_STORAGE_API
 const TransactionHistory = ({ AwbDetails, onClose }) => {
 
@@ -55,7 +56,7 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
 
                 <div className="tab-buttons transaction d-inline-flex">
                     <div
-                        className={ activeTab === "tab1" ? "active" : ""}
+                        className={activeTab === "tab1" ? "active" : ""}
                         onClick={() => handleTabClick("tab1")}
                     >
                         <h6 className="text-dark headtab"> Summary</h6>
@@ -72,6 +73,12 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                         onClick={() => handleTabClick("tab3")}
                     >
                         <h6 className="text-dark headtab"> POD</h6>
+                    </div>
+                    <div
+                        className={activeTab === "tab4" ? "active" : ""}
+                        onClick={() => handleTabClick("tab4")}
+                    >
+                        <h6 className="text-dark headtab"> Proof Of Attempt</h6>
                     </div>
                     <div>
                         <h6 className="text-dark headtab">Transaction History for AWB No: {AwbDetails?.Awbno}</h6>
@@ -100,6 +107,12 @@ const TransactionHistory = ({ AwbDetails, onClose }) => {
                             <div className="blocks-tab">
                                 <p className="text-dark">Proof of Delivery.</p>
                                 <POD AwbDetails={AwbDetails} />
+                            </div>
+                        )}
+                        {activeTab === "tab4" && (
+                            <div className="blocks-tab">
+                                {/* <p className="text-dark">Proof of Attempt.</p> */}
+                                <POA AwbDetails={AwbDetails} />
                             </div>
                         )}
 

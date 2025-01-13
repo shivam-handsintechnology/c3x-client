@@ -24,7 +24,7 @@ const Brief = ({ AwbDetails }) => {
                                     <label>{AwbDetails?.ShipperTel}</label>
                                     <br />
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <label className='locate-label mx-1'> {AwbDetails?.OriginName} </label>
                                     </div>
                                 </Col>
@@ -46,7 +46,7 @@ const Brief = ({ AwbDetails }) => {
                                     <label>{AwbDetails?.ConsigneeTel}</label>
                                     <br />
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <label className='locate-label mx-1'> {AwbDetails?.DestinationName} </label>
                                     </div>
                                 </Col>
@@ -59,7 +59,7 @@ const Brief = ({ AwbDetails }) => {
                             <Row>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Weight  </label>
                                             <label className='locate-label mx-1'> {AwbDetails?.Weight} kg </label>
@@ -69,7 +69,7 @@ const Brief = ({ AwbDetails }) => {
                                 </Col>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Service Type
 
@@ -83,7 +83,7 @@ const Brief = ({ AwbDetails }) => {
 
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Item Value </label>
                                             <label className='locate-label mx-1'> {AwbDetails?.InvoiceValue} </label>
@@ -116,7 +116,7 @@ const Brief = ({ AwbDetails }) => {
                             <Row>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'>Payment Method
                                             </label>
@@ -127,7 +127,7 @@ const Brief = ({ AwbDetails }) => {
                                 </Col>
                                 <Col lg={6}>
                                     <div className='d-inline-flex mt-3'>
-                                        <div className='tracking-icons'><img src={footerlogo} /></div>
+                                        <div className='tracking-icons'><img src="/logo.png" /></div>
                                         <div className='d-grid'>
                                             <label className='locate-label mx-1'> Service Charge Paid By </label>
                                             <label className='locate-label mx-1'>Shipper </label>
